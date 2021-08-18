@@ -44,7 +44,7 @@ const LoginPage: React.FC = () => {
 	}
 
 	return (
-		<div id="register-page" className="column">
+		<div id="login-page" className="column">
 			{displayHeader()}
 
 			<LoginForm
