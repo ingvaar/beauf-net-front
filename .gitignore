@@ -119,3 +119,5 @@ dist
 
 # Jest
 coverage
+
+build
