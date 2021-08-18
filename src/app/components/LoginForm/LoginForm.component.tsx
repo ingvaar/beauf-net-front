@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
-/** INTERFACES */
 import { ILoginForm } from "interfaces/ILoginForm.interface";
+import { DefaultLoginForm } from "./constants/DefaultLoginForm.constant";
 
 interface IProps {
 	method: string;
@@ -18,6 +18,9 @@ const LoginForm: React.FC<IProps> = ({
 	let history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
+	const [form, setForm] = useState<ILoginForm>(
+		DefaultLoginForm
+	);
 
 	function displayHeader() {
 		return (
@@ -29,6 +32,7 @@ const LoginForm: React.FC<IProps> = ({
 
 	function handleChange(event: any) {
 		setError("");
+		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
 	async function handleSubmit(): Promise<void> {
@@ -40,13 +44,13 @@ const LoginForm: React.FC<IProps> = ({
 			<form onSubmit={handleSubmit}>
 				<input
 					placeholder="Identifier"
-					value=""
+					value={form.identifier}
 					name="identifier"
 					onChange={handleChange}
 				/>
 				<input
 					placeholder="Password"
-					value=""
+					value={form.password}
 					name="password"
 					onChange={handleChange}
 				/>
