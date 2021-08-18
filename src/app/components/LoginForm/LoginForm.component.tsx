@@ -39,7 +39,7 @@ const LoginForm: React.FC<IProps> = ({
 	};
 
 	return (
-		<div id="register-page" className="column">
+		<div id="login-component" className="column">
 			{displayHeader()}
 			<form onSubmit={handleSubmit}>
 				<input
