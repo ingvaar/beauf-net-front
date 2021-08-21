@@ -1,11 +1,13 @@
 import axios from "axios";
 
+const BASE_URI = process.env.REACT_APP_API_URI;
+
 export class ApiService {
 	public static async get(endpoint: string) {
 		return new Promise((resolve, reject) => {
 			axios
 				.get(
-					`${process.env.REACT_APP_API_URI}${endpoint}`
+					`${BASE_URI}${endpoint}`
 					, {
 						headers: {
 							Authorization: `Bearer ${window.localStorage.getItem(
@@ -27,7 +29,7 @@ export class ApiService {
 		return new Promise((resolve, reject) => {
 			axios
 				.post(
-					`${process.env.REACT_APP_API_URI}${endpoint}`,
+					`${BASE_URI}${endpoint}`,
 					query,
 					{
 						headers: {
@@ -50,7 +52,7 @@ export class ApiService {
 		return new Promise((resolve, reject) => {
 			axios
 				.put(
-					`${process.env.REACT_APP_API_URI}${endpoint}`,
+					`${BASE_URI}${endpoint}`,
 					query,
 					{
 						headers: {
@@ -73,7 +75,7 @@ export class ApiService {
 		return new Promise((resolve, reject) => {
 			axios
 				.delete(
-					`${process.env.REACT_APP_API_URI}${endpoint}`,
+					`${BASE_URI}${endpoint}`,
 					{
 						headers: {
 							Authorization: `Bearer ${window.localStorage.getItem(
