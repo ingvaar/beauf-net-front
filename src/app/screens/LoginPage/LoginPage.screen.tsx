@@ -9,9 +9,11 @@ import { ILoginForm } from "interfaces/ILoginForm.interface";
 
 /** REACT ROUTER */
 import { useHistory } from "react-router-dom";
+import { AuthService } from "services/auth.service";
 
 
 const LoginPage: React.FC = () => {
+	const history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
 
@@ -28,6 +30,8 @@ const LoginPage: React.FC = () => {
 	): Promise<void> => {
 		try {
 			setLoading(true);
+			await AuthService.login(registerForm);
+			history.push("/");
 		} catch (error) {
 			setError(error.message);
 			setLoading(false);

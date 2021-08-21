@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ILoginForm } from "interfaces/ILoginForm.interface";
 import { DefaultLoginForm } from "./constants/DefaultLoginForm.constant";
-import "./scss/LoginForm.scss";
 import { AuthService } from "services/auth.service";
+
+import "./scss/LoginForm.scss";
 
 interface IProps {
 	method: string;
@@ -20,6 +21,10 @@ const LoginForm: React.FC<IProps> = ({
 	const [form, setForm] = useState<ILoginForm>(
 		DefaultLoginForm
 	);
+
+	useEffect(() => {
+		setError(parentError);
+	}, [parentError])
 
 	function displayHeader() {
 		return (
@@ -40,7 +45,7 @@ const LoginForm: React.FC<IProps> = ({
 			callback(form);
 		} catch (error) {
 			setError(error.message);
-			setForm({ identifier: "", password: "" });
+			setForm({ identifier: form.identifier, password: "" });
 		}
 	};
 
