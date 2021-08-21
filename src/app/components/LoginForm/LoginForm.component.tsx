@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
 
 import { ILoginForm } from "interfaces/ILoginForm.interface";
 import { DefaultLoginForm } from "./constants/DefaultLoginForm.constant";
+import "./scss/LoginForm.scss";
+import { AuthService } from "services/auth.service";
 
 interface IProps {
 	method: string;
@@ -15,8 +16,6 @@ const LoginForm: React.FC<IProps> = ({
 	parentError,
 	callback,
 }) => {
-	let history = useHistory();
-	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
 	const [form, setForm] = useState<ILoginForm>(
 		DefaultLoginForm
@@ -35,13 +34,20 @@ const LoginForm: React.FC<IProps> = ({
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	async function handleSubmit(): Promise<void> {
+	async function handleSubmit() {
+		try {
+			AuthService.isValidLoginRegisterForm(form);
+			callback(form);
+		} catch (error) {
+			setError(error.message);
+			setForm({ identifier: "", password: "" });
+		}
 	};
 
 	return (
 		<div id="login-component" className="column">
 			{displayHeader()}
-			<form onSubmit={handleSubmit}>
+			<form>
 				<input
 					placeholder="Identifier"
 					value={form.identifier}
@@ -56,8 +62,13 @@ const LoginForm: React.FC<IProps> = ({
 				/>
 			</form>
 			<div className="submit-button">
-				<button type="submit">Login</button>
+				<button type="submit" onClick={handleSubmit}>Login</button>
 			</div>
+			{error.length > 0 && (
+				<div className="error">
+					<p>{error}</p>
+				</div>
+			)}
 		</div>
 	);
 };
