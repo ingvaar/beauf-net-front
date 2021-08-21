@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 
 
 const LoginPage: React.FC = () => {
-	let history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
 

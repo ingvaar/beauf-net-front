@@ -41,14 +41,13 @@ export class AuthService {
 		return (/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(.{8,})$/).test(password);
 	};
 
-	public static isValidLoginRegisterForm(loginForm: ILoginForm): string {
+	public static isValidLoginRegisterForm(loginForm: ILoginForm) {
 		if (loginForm.identifier.length === 0 || loginForm.password.length === 0) {
-			return "Please, fill all the fields.";
+			throw new Error("Please, fill all the fields.");
 		}
 		if (this.isValidPassword(loginForm.password) === false) {
-			return "The password must be at least 8 characters long and contain 1 digit and 1 uppercase.";
+			throw new Error("The password must be at least 8 characters long and contain 1 digit and 1 uppercase.");
 		}
-		return "";
 	};
 
 	public static async login(loginForm: ILoginForm) {
