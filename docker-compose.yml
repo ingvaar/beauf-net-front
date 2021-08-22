@@ -1,0 +1,12 @@
+version: "3.5"
+
+services:
+    front:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - REACT_APP_API_URI=${BEAUF_NET_API_URI}
+        restart: unless-stopped
+        ports:
+            - "80:80"

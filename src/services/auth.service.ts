@@ -53,7 +53,7 @@ export class AuthService {
 	public static async login(loginForm: ILoginForm) {
 		try {
 			const res: ILoginResponse = await ApiService
-				.post("/auth/login", loginForm)
+				.post("/login", loginForm)
 				.then((res: any) => res);
 
 			window.localStorage.setItem("token", res.token);
