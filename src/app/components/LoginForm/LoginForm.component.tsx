@@ -62,6 +62,7 @@ const LoginForm: React.FC<IProps> = ({
 				<input
 					placeholder="Password"
 					value={form.password}
+					type='password'
 					name="password"
 					onChange={handleChange}
 				/>
