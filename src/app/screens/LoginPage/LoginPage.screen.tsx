@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
 	const displayHeader = () => {
 		return (
 			<div className="header">
-				<h1>Login page Header</h1>
+				<h2>Admin Login</h2>
 			</div>
 		);
 	};
@@ -44,6 +44,10 @@ const LoginPage: React.FC = () => {
 				<h5>loading...</h5>
 			</div>
 		);
+	}
+
+	if (window.localStorage.getItem("token")) {
+		history.push('/');
 	}
 
 	return (
