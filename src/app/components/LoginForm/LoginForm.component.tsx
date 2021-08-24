@@ -26,14 +26,6 @@ const LoginForm: React.FC<IProps> = ({
 		setError(parentError);
 	}, [parentError])
 
-	function displayHeader() {
-		return (
-			<div className="header">
-				<h3>Login</h3>
-			</div>
-		);
-	};
-
 	function handleChange(event: any) {
 		setError("");
 		setForm({ ...form, [event.target.name]: event.target.value });
@@ -51,7 +43,6 @@ const LoginForm: React.FC<IProps> = ({
 
 	return (
 		<div id="login-component" className="column">
-			{displayHeader()}
 			<form>
 				<input
 					placeholder="Identifier"
