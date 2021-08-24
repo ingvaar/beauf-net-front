@@ -1,0 +1,49 @@
+#menubar {
+	margin: 0px auto;
+	min-height: 30px;
+	position: -webkit-sticky;
+	position: sticky;
+	background: mediumaquamarine;
+
+	.signout-button {
+		text-align: center;
+
+		button {
+			background: lightgrey;
+			color: rgb(0, 0, 0);
+			padding: 2px 6px;
+			border-radius: 15px;
+			font-size: 1rem;
+			margin-left: 88%;
+			margin-right: 4%;
+			width: 8%;
+			cursor: pointer;
+
+			&:active {
+				background: lightsalmon;
+			}
+		}
+	}
+
+	.login-button {
+		text-align: center;
+
+		button {
+			position:inherit;
+			top: 0.6%;
+			height: 50%;
+			width: 6%;
+			margin-left: 88%;
+			margin-right: 4%;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			cursor: pointer;
+			background: lightgrey;
+
+			&:active {
+				background: lightsteelblue;
+			}
+		}
+
+	}
+}
