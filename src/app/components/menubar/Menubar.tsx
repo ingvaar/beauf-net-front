@@ -1,51 +1,40 @@
 import { history } from "App";
-import { Component } from "react";
-import { useHistory } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
 
 import "./scss/Menubar.scss";
 
-interface props {
+export const Menubar: FC = () => {
+	const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
-}
-
-export class Menubar extends Component {
-
-	constructor(props: props) {
-		super(props);
-		this.state = {
-
+	useEffect(() => {
+		if (window.localStorage.getItem("token")) {
+			setLoggedIn(true);
 		}
-	}
+	}, []);
 
-	private async handleSignOut() {
+	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
+		setLoggedIn(false);
 	}
 
-	private goToLogin() {
+	const goToLogin = () => {
 		history.push("/login")
 	}
 
-	private login(): JSX.Element {
-		if (window.localStorage.getItem('token')) {
+	const login = () => {
+		if (loggedIn) {
 			return (
-				<div className="signout-button">
-					<button onClick={this.handleSignOut}>Disconnect</button>
-				</div>
-			);
-		} else {
-			return (
-				<div className="login-button">
-					<button onClick={this.goToLogin}>Admin</button>
-				</div>
+				<button className="admin" onClick={handleSignOut}>Disconnect</button>
 			);
 		}
-	}
-
-	public render(): JSX.Element {
 		return (
-			<div id='menubar'>
-				{this.login()}
-			</div>
+			<button className="admin" onClick={goToLogin}>Admin</button>
 		);
 	}
+
+	return (
+		<div id='menubar'>
+			{login()}
+		</div>
+	);
 }
