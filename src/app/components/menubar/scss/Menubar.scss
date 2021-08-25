@@ -9,12 +9,35 @@
 	.admin {
 		position:inherit;
 		height: 100%;
-		width: 6%;
+		width: 5%;
 		float: right;
 		font-size: 0.8rem;
+		font-weight: bold;
 		cursor: pointer;
-		background: rgb(168, 168, 168);
 		border-radius: 0px;
+
+		&:hover {
+			background: rgb(168, 168, 168);
+		}
+
+		&:active {
+			background: lightsteelblue;
+		}
+	}
+
+	.home {
+		position:inherit;
+		height: 100%;
+		width: 5%;
+		float: left;
+		font-size: 0.8rem;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 0px;
+
+		&:hover {
+			background: rgb(168, 168, 168);
+		}
 
 		&:active {
 			background: lightsteelblue;

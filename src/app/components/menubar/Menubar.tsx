@@ -22,6 +22,12 @@ export const Menubar: FC = () => {
 		history.push("/login")
 	}
 
+	const home = () => {
+		return (
+			<button className="home" onClick={() => history.push("/")}>Home</button>
+		)
+	}
+
 	const login = () => {
 		if (loggedIn) {
 			return (
@@ -35,6 +41,7 @@ export const Menubar: FC = () => {
 
 	return (
 		<div id='menubar'>
+			{home()}
 			{login()}
 		</div>
 	);
