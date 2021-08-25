@@ -1,10 +1,11 @@
-import { history } from "App";
 import { FC, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 import "./scss/Menubar.scss";
 
 export const Menubar: FC = () => {
 	const [loggedIn, setLoggedIn] = useState<boolean>(false);
+	const history = useHistory();
 
 	useEffect(() => {
 		if (window.localStorage.getItem("token")) {
