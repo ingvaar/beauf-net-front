@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import "./scss/LoginPage.scss";
-
-/** COMPONENTS */
 import LoginForm from "app/components/LoginForm/LoginForm.component";
-
-/** INTERFACES */
 import { ILoginForm } from "interfaces/ILoginForm.interface";
-
-/** REACT ROUTER */
 import { useHistory } from "react-router-dom";
 import { AuthService } from "services/auth.service";
+import { useAppDispatch } from "hooks";
+import { IUser } from "interfaces/IUser.interface";
+import { updateUser } from "features/user/userSlice";
 
+import "./scss/LoginPage.scss";
 
 const LoginPage: React.FC = () => {
 	const history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
+	let dispatch = useAppDispatch();
 
 	const displayHeader = () => {
 		return (
@@ -31,6 +29,15 @@ const LoginPage: React.FC = () => {
 		try {
 			setLoading(true);
 			await AuthService.login(registerForm);
+			AuthService
+				.isLogged()
+				.then((res: boolean | IUser) => {
+					if (res !== false) {
+						dispatch(updateUser(res))
+					}
+				}).catch((error) => {
+					throw error;
+				});
 			history.push("/");
 		} catch (error) {
 			setError(error.message);
