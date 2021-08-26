@@ -1,21 +1,19 @@
-import { FC, useEffect, useState } from "react";
+import { deleteUser, selectUser } from "features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { IUser } from "interfaces/IUser.interface";
+import { FC } from "react";
 import { useHistory } from "react-router";
 
 import "./scss/Menubar.scss";
 
 export const Menubar: FC = () => {
-	const [loggedIn, setLoggedIn] = useState<boolean>(false);
+	const user: IUser = useAppSelector(selectUser);
+	let dispatch = useAppDispatch();
 	const history = useHistory();
-
-	useEffect(() => {
-		if (window.localStorage.getItem("token")) {
-			setLoggedIn(true);
-		}
-	}, []);
 
 	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
-		setLoggedIn(false);
+		dispatch(deleteUser());
 	}
 
 	const goToLogin = () => {
@@ -29,7 +27,7 @@ export const Menubar: FC = () => {
 	}
 
 	const login = () => {
-		if (loggedIn) {
+		if (user.id !== "") {
 			return (
 				<button className="admin" onClick={handleSignOut}>Disconnect</button>
 			);
