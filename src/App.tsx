@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import LoginPage from 'app/screens/LoginPage/LoginPage.screen';
 import { Homepage } from 'app/screens/homepage/Homepage';
-import { Menubar } from 'app/components/menubar/Menubar';
+import { Layout } from "app/components/layout/Layout";
 
 export const history = createBrowserHistory({ forceRefresh: false });
 
@@ -14,11 +14,12 @@ function App() {
   return (
     <div className="App">
       <Router history={history}>
-        <Menubar />
-        <Switch>
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="" component={Homepage} />
-        </Switch>
+        <Layout>
+          <Switch>
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="" component={Homepage} />
+          </Switch>
+        </Layout>
       </Router>
     </div>
   );
