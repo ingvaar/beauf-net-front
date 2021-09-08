@@ -1,0 +1,49 @@
+import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from "@material-ui/core";
+import { FC, PropsWithChildren, useRef, useState } from "react";
+
+import "./scss/ButtonDropdown.scss";
+
+type Props = {
+	name: string,
+	buttonID: string,
+	arrayOfData: Array<{ key: string, callback: () => void, name: string }>
+}
+
+export const ButtonDropdown: FC<Props> = (props: PropsWithChildren<Props>) => {
+	const [isActive, setIsActive] = useState(false);
+	const onClick = () => setIsActive(!isActive);
+	const anchorRef = useRef<HTMLButtonElement>(null);
+
+	const options = props.arrayOfData.map((data) =>
+		<MenuItem key={data.key} onClick={data.callback}>{data.name}</MenuItem>
+	);
+
+	return (
+		<div className="button-dropdown-container" id={props.buttonID}>
+			<Button
+				ref={anchorRef}
+				aria-controls={isActive ? 'menu-list-grow' : undefined}
+				aria-haspopup="true"
+				onClick={onClick}
+			>
+				{props.name}
+			</Button>
+			<Popper open={isActive} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+				{({ TransitionProps, placement }) => (
+					<Grow
+						{...TransitionProps}
+						style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+					>
+						<Paper>
+							<ClickAwayListener onClickAway={() => { setIsActive(false) }}>
+								<MenuList autoFocusItem={isActive} id="menu-list-grow">
+									{options}
+								</MenuList>
+							</ClickAwayListener>
+						</Paper>
+					</Grow>
+				)}
+			</Popper>
+		</div>
+	);
+}
