@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import LoginPage from 'app/screens/LoginPage/LoginPage.screen';
 import { Homepage } from 'app/screens/homepage/Homepage';
-import { Layout } from "app/components/layout/Layout";
+import { Layout } from "app/components/Layout/Layout";
 
 export const history = createBrowserHistory({ forceRefresh: false });
 

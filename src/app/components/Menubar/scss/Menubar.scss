@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+#menubar {
+	margin: 0px auto;
+	margin-top: 1%;
+	min-height: 30px;
+	position: -webkit-sticky;
+	position: sticky;
+	background: rgba(lightgray, 0);
+	height: 30px;
+
+	.MuiButton-root {
+		background: linear-gradient(45deg, #ff97af 30%, #ec905e 70%);
+		box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+		border-radius: 30px;
+		border: 0;
+		height: 100%;
+
+		.MuiButton-label {
+			text-transform: none;
+			font-weight: bold;
+			color: white;
+			line-height: 100%;
+			padding: 10px;
+		}
+	}
+
+	#login {
+		float: right;
+		margin-right: 1%;
+	}
+
+	#admin {
+		float: right;
+		margin-right: 1%;
+	}
+
+	#home {
+		float: left;
+		margin-left: 1%;
+		font-style: italic;
+		background: white;
+		box-shadow: none;
+
+		.MuiButton-label {
+			font-size: 30px;
+			font-family: "Great Vibes";
+			background-color: #CA4246;
+
+			 background-image: linear-gradient(
+				45deg,
+				#CA4246 16.666%,
+				#E16541 16.666%,
+				#E16541 33.333%,
+				#F18F43 33.333%,
+				#F18F43 50%,
+				#8B9862 50%,
+				#8B9862 66.666%,
+				#476098 66.666%,
+				#476098 83.333%,
+				#A7489B 83.333%);
+
+				background-size: 100%;
+				background-repeat: repeat;
+
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+
+				animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+		}
+
+		.MuiButton-label:hover {
+			animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+		}
+
+		@keyframes rainbow-text-simple-animation-rev {
+			0% {
+				background-size: 650%;
+			}
+			40% {
+				background-size: 650%;
+			}
+			100% {
+				background-size: 100%;
+			}
+		}
+
+		@keyframes rainbow-text-simple-animation {
+			0% {
+				background-size: 100%;
+			}
+			80% {
+				background-size: 650%;
+			}
+			100% {
+				background-size: 650%;
+			}
+		}
+	}
+}
