@@ -3,7 +3,7 @@ import { useAppDispatch } from "hooks";
 import { IUser } from "interfaces/IUser.interface";
 import { FC, useEffect } from "react"
 import { AuthService } from "services/auth.service";
-import { Menubar } from "../menubar/Menubar"
+import { Menubar } from "../Menubar/Menubar"
 
 export const Layout: FC = ({ children }) => {
 	let dispatch = useAppDispatch();

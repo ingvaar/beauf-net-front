@@ -1,8 +1,10 @@
+import { Button } from "@material-ui/core";
 import { deleteUser, selectUser } from "features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { IUser } from "interfaces/IUser.interface";
 import { FC } from "react";
 import { useHistory } from "react-router";
+import { ButtonDropdown } from "../ButtonDropdown/ButtonDropdown";
 
 import "./scss/Menubar.scss";
 
@@ -22,18 +24,30 @@ export const Menubar: FC = () => {
 
 	const home = () => {
 		return (
-			<button className="home" onClick={() => history.push("/")}>Home</button>
+			<Button className="home" id="home" onClick={() => history.push("/")}>Beauf.net</Button>
 		)
 	}
 
 	const login = () => {
 		if (user.id !== "") {
 			return (
-				<button className="admin" onClick={handleSignOut}>Disconnect</button>
+				drop()
 			);
 		}
 		return (
-			<button className="admin" onClick={goToLogin}>Admin</button>
+			<Button className="login" id="login" onClick={goToLogin}>Login</Button>
+		);
+	}
+
+	const drop = () => {
+		const array = [{
+			key: "1",
+			name: "Logout",
+			callback: handleSignOut
+		}]
+
+		return (
+			<ButtonDropdown arrayOfData={array} name="Admin" buttonID="admin" />
 		);
 	}
 
