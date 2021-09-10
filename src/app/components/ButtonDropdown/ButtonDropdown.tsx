@@ -15,7 +15,7 @@ export const ButtonDropdown: FC<Props> = (props: PropsWithChildren<Props>) => {
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
 	const options = props.arrayOfData.map((data) =>
-		<MenuItem key={data.key} onClick={data.callback}>{data.name}</MenuItem>
+		<MenuItem key={data.key} onClick={data.callback}><span>{data.name}</span></MenuItem>
 	);
 
 	return (
@@ -28,7 +28,20 @@ export const ButtonDropdown: FC<Props> = (props: PropsWithChildren<Props>) => {
 			>
 				{props.name}
 			</Button>
-			<Popper open={isActive} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+			<Popper
+				open={isActive}
+				anchorEl={anchorRef.current}
+				role={undefined}
+				transition
+				disablePortal
+				placement="bottom-end"
+				modifiers={{
+					offset: {
+						enabled: true,
+						offset: '0, 10'
+					}
+				}}
+			>
 				{({ TransitionProps, placement }) => (
 					<Grow
 						{...TransitionProps}
