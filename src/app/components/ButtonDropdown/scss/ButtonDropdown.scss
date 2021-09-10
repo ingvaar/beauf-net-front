@@ -1,5 +1,4 @@
 .button-dropdown-container {
-	margin: auto;
 	height: 100%;
 
 	.MuiButton-root {
@@ -12,6 +11,15 @@
 			font-weight: bold;
 			color: black;
 			line-height: 100%;
+		}
+	}
+
+	.MuiList-root {
+		width: auto;
+
+		.MuiListItem-root {
+			width: auto;
+			justify-content: center;
 		}
 	}
 }
