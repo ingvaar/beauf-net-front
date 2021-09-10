@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { Button, TextField } from "@material-ui/core";
 
 import { ILoginForm } from "interfaces/ILoginForm.interface";
 import { DefaultLoginForm } from "./constants/DefaultLoginForm.constant";
@@ -12,7 +13,7 @@ interface IProps {
 	callback: (form: ILoginForm) => void;
 }
 
-const LoginForm: React.FC<IProps> = ({
+const LoginForm: FC<IProps> = ({
 	method,
 	parentError,
 	callback,
@@ -44,22 +45,25 @@ const LoginForm: React.FC<IProps> = ({
 	return (
 		<div id="login-component" className="column">
 			<form>
-				<input
-					placeholder="Identifier"
-					value={form.identifier}
+				<TextField
+					id="standard"
+					label="Identifier"
 					name="identifier"
 					onChange={handleChange}
+					value={form.identifier}
 				/>
-				<input
-					placeholder="Password"
-					value={form.password}
-					type='password'
+				<TextField
+					id="standard-password-input"
+					label="Password"
+					type="password"
 					name="password"
+					autoComplete="current-password"
 					onChange={handleChange}
+					value={form.password}
 				/>
 			</form>
 			<div className="submit-button">
-				<button type="submit" onClick={handleSubmit}>Login</button>
+				<Button type="submit" onClick={handleSubmit}>Sign in</Button>
 			</div>
 			{error.length > 0 && (
 				<div className="error">
