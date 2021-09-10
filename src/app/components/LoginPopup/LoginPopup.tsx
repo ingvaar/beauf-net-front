@@ -1,4 +1,4 @@
-import { Button, ClickAwayListener, Grow, Paper, Popper } from "@material-ui/core";
+import { Button, Grow, Paper, Popper } from "@material-ui/core";
 import LoginPage from "app/screens/LoginPage/LoginPage.screen";
 import { FC, useRef, useState } from "react";
 
@@ -29,9 +29,7 @@ export const LoginPopup: FC<Props> = () => {
 						style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
 					>
 						<Paper>
-							<ClickAwayListener onClickAway={() => { setIsActive(false) }}>
-								<LoginPage />
-							</ClickAwayListener>
+							<LoginPage />
 						</Paper>
 					</Grow>
 				)}
