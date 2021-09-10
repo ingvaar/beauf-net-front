@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import LoginPage from 'app/screens/LoginPage/LoginPage.screen';
 import { Homepage } from 'app/screens/homepage/Homepage';
 import { Layout } from "app/components/Layout/Layout";
 
@@ -16,7 +15,6 @@ function App() {
       <Router history={history}>
         <Layout>
           <Switch>
-            <Route exact path="/login" component={LoginPage} />
             <Route exact path="" component={Homepage} />
           </Switch>
         </Layout>

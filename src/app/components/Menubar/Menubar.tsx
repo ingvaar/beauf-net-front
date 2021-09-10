@@ -5,6 +5,7 @@ import { IUser } from "interfaces/IUser.interface";
 import { FC } from "react";
 import { useHistory } from "react-router";
 import { ButtonDropdown } from "../ButtonDropdown/ButtonDropdown";
+import { LoginPopup } from "../LoginPopup/LoginPopup";
 
 import "./scss/Menubar.scss";
 
@@ -16,10 +17,6 @@ export const Menubar: FC = () => {
 	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
 		dispatch(deleteUser());
-	}
-
-	const goToLogin = () => {
-		history.push("/login")
 	}
 
 	const home = () => {
@@ -35,7 +32,9 @@ export const Menubar: FC = () => {
 			);
 		}
 		return (
-			<Button className="login" id="login" onClick={goToLogin}>Login</Button>
+			<div id="login">
+				<LoginPopup />
+			</div>
 		);
 	}
 

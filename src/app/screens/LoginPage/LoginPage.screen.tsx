@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import LoginForm from "app/components/LoginForm/LoginForm.component";
 import { ILoginForm } from "interfaces/ILoginForm.interface";
 import { useHistory } from "react-router-dom";
@@ -9,19 +9,11 @@ import { updateUser } from "features/user/userSlice";
 
 import "./scss/LoginPage.scss";
 
-const LoginPage: React.FC = () => {
+const LoginPage: FC = () => {
 	const history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
 	let dispatch = useAppDispatch();
-
-	const displayHeader = () => {
-		return (
-			<div className="header">
-				<h2>Admin Login</h2>
-			</div>
-		);
-	};
 
 	const handleSubmit = async (
 		registerForm: ILoginForm
@@ -59,8 +51,6 @@ const LoginPage: React.FC = () => {
 
 	return (
 		<div id="login-page" className="column">
-			{displayHeader()}
-
 			<LoginForm
 				method="login"
 				parentError={error}
