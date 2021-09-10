@@ -38,6 +38,7 @@ const LoginPage: FC = () => {
 	};
 
 	if (loading) {
+		// TODO : refacto
 		return (
 			<div className="loader">
 				<h5>loading...</h5>

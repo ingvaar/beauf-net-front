@@ -43,7 +43,8 @@ export const Menubar: FC = () => {
 			key: "1",
 			name: "Logout",
 			callback: handleSignOut
-		}]
+		},
+		]
 
 		return (
 			<ButtonDropdown arrayOfData={array} name="Admin" buttonID="admin" />

@@ -44,11 +44,12 @@ const LoginForm: FC<IProps> = ({
 
 	return (
 		<div id="login-component" className="column">
-			<form>
+			<form onSubmit={handleSubmit}>
 				<TextField
 					id="standard"
 					label="Identifier"
 					name="identifier"
+					type="email"
 					onChange={handleChange}
 					value={form.identifier}
 				/>
@@ -61,10 +62,10 @@ const LoginForm: FC<IProps> = ({
 					onChange={handleChange}
 					value={form.password}
 				/>
+				<div className="submit-button">
+					<Button type="submit" onClick={handleSubmit}>Sign in</Button>
+				</div>
 			</form>
-			<div className="submit-button">
-				<Button type="submit" onClick={handleSubmit}>Sign in</Button>
-			</div>
 			{error.length > 0 && (
 				<div className="error">
 					<p>{error}</p>

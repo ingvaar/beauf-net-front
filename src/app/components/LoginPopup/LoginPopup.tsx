@@ -22,7 +22,20 @@ export const LoginPopup: FC<Props> = () => {
 			>
 				Login
 			</Button>
-			<Popper open={isActive} anchorEl={anchorRef.current} role={undefined} transition disablePortal placement="bottom-end">
+			<Popper
+				open={isActive}
+				anchorEl={anchorRef.current}
+				role={undefined}
+				transition
+				disablePortal
+				placement="bottom-end"
+				modifiers={{
+					offset: {
+						enabled: true,
+						offset: '0, 10'
+					}
+				}}
+			>
 				{({ TransitionProps, placement }) => (
 					<Grow
 						{...TransitionProps}
