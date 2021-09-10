@@ -1,11 +1,50 @@
 #login-component {
-	max-width: 320px;
+	max-width: 250px;
 	margin: 0px auto;
 
     button {
       padding: 0px;
     }
 
+	.submit-button
+	{
+		.MuiButton-root {
+			background: linear-gradient(
+				255deg,
+				#97b8ffd5 0%,
+				#aa97ffd5 50%,
+				#ff9797d5 100%,
+			);
+			box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+			border-radius: 30px;
+			border: 0;
+			height: 100%;
+			width: 50%;
+
+			.MuiButton-label {
+				text-transform: none;
+				font-weight: bold;
+				color: white;
+				line-height: 100%;
+				padding: 10px;
+				text-shadow: h-shadow v-shadow blur-radius black;
+			}
+
+			&:active {
+				background: linear-gradient(
+					35deg,
+					#97a1ffd5 20%,
+					#97e7ffd5 50%,
+					#7af143d5 100%,
+				);
+
+				.MuiButton-label {
+					font-weight: bold;
+					color: white;
+				}
+			}
+		}
+	}
 
 	h2 {
 		text-align: center;
@@ -15,10 +54,19 @@
 
 	form {
 		margin: 0px auto;
-		max-width: 300px;
+		max-width: 90%;
 
-		input {
-			margin-bottom: 25px;
+		.MuiTextField-root {
+			margin-bottom: 10%;
+			padding: 0px;
+		}
+
+		.MuiFormLabel-root.Mui-focused {
+			color: rgb(212, 71, 14);
+		}
+
+		.MuiInput-underline:after {
+			border-bottom: 2px solid orange;
 		}
 	}
 
@@ -28,26 +76,11 @@
 		p {
 			text-align: center;
 			margin-bottom: 0px;
-			color: red;
-			font-size: 0.875rem;
-		}
-	}
-
-	.submit-button {
-		text-align: center;
-
-		button {
-			background: lightgrey;
-			color: rgb(0, 0, 0);
-			padding: 8px 13px;
-			border-radius: 15px;
-			font-size: 1rem;
-			width: 40%;
-			cursor: pointer;
-
-			&:active {
-				background: #a2d0f3;
-			}
+			color:  #e20438af;
+			font-size: 0.9rem;
+			font-family: "Roboto";
+			font-weight: 900;
+			padding-top: 6%;
 		}
 	}
 }
