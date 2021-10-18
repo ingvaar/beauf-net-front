@@ -28,7 +28,7 @@ export const QuotesList: FC<Props> = (prop) => {
 
 	const elements = quotes?.data.map((quote) => {
 		return (
-			<div id={quote.id} className="item">
+			<div key={quote.id} className="item">
 				<div className="quote">
 					<span>
 						{quote.text}
