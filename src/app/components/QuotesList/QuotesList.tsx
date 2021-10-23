@@ -8,6 +8,7 @@ import "./scss/QuotesList.scss";
 type Props = {
 	page: number,
 	perPage: number
+	handleTotal: (total: number) => void
 }
 
 export const QuotesList: FC<Props> = (prop) => {
@@ -19,12 +20,13 @@ export const QuotesList: FC<Props> = (prop) => {
 		setLoading(true);
 		QuoteService.getQuotes(prop.perPage, prop.page).then((res: IQuotesPublic) => {
 			setQuotes(res);
+			prop.handleTotal(res.total);
 			setLoading(false);
 		}).catch((err) => {
 			setError(err.message);
 			setLoading(false);
 		});
-	}, [prop.page, prop.perPage]);
+	}, [prop, prop.page, prop.perPage]);
 
 	const elements = quotes?.data.map((quote) => {
 		return (
@@ -76,9 +78,6 @@ export const QuotesList: FC<Props> = (prop) => {
 			<div className="list column">
 				{elements}
 			</div>
-			<p>Page: {quotes?.page}</p>
-			<p>Per Page: {quotes?.perPage}</p>
-			<p>Total: {quotes?.total}</p>
 		</div>
 	);
 };
