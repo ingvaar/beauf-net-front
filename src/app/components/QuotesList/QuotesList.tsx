@@ -8,7 +8,7 @@ import "./scss/QuotesList.scss";
 type Props = {
 	page: number,
 	perPage: number
-	handleTotal: (total: number) => void
+	setTotal: (total: number) => void
 }
 
 export const QuotesList: FC<Props> = (prop) => {
@@ -20,7 +20,7 @@ export const QuotesList: FC<Props> = (prop) => {
 		setLoading(true);
 		QuoteService.getQuotes(prop.perPage, prop.page).then((res: IQuotesPublic) => {
 			setQuotes(res);
-			prop.handleTotal(res.total);
+			prop.setTotal(res.total);
 			setLoading(false);
 		}).catch((err) => {
 			setError(err.message);
