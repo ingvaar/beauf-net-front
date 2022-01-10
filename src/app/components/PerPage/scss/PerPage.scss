@@ -1,0 +1,16 @@
+.per-page {
+	display: inline-flex;
+	flex-wrap: wrap;
+
+	.form-control {
+		.select {
+			display: flex;
+		}
+	}
+
+	.helper {
+		display: inline-flex;
+    	align-items: center;
+		margin-right: 10px;
+	}
+}
