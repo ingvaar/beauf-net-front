@@ -1,7 +1,10 @@
+import { ButtonAddQuote } from "app/components/ButtonAddQuote/ButtonAddQuote";
 import { Pagination } from "app/components/Pagination/Pagination";
 import { PerPage } from "app/components/PerPage/PerPage";
 import { QuotesList } from "app/components/QuotesList/QuotesList"
 import { FC, useState } from "react";
+
+import "./scss/QuotesList.scss";
 
 export const QuotesListPage: FC = () => {
 	const [page, setPage] = useState<number>(1);
@@ -10,6 +13,7 @@ export const QuotesListPage: FC = () => {
 
 	return (
 		<div id="quotes-list-page" className="column">
+			<ButtonAddQuote />
 			<PerPage perPage={perPage} setPerPage={setPerPage} />
 			<QuotesList page={page} perPage={perPage} setTotal={setTotal} />
 			<Pagination total={total} page={page} perPage={perPage} setPage={setPage} />
