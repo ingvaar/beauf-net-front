@@ -1,0 +1,28 @@
+.button-add-quote {
+	position: fixed;
+    top: 86vh;
+    right: 10vw;
+    width: fit-content;
+
+	.MuiButtonBase-root {
+		background: linear-gradient(45deg, #ff97af 30%, #ec905e 70%);
+		box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+		border-radius: 30px;
+		border: 0;
+		height: 100%;
+
+		.MuiFab-label {
+			display: inline-flex;
+			text-transform: none;
+			font-weight: bold;
+			color: white;
+			font-size: 1.2rem;
+			padding-top: 4px;
+			padding-bottom: 4px;
+		}
+
+		.MuiSvgIcon-root {
+			margin-right: 4px;
+		}
+	}
+}
