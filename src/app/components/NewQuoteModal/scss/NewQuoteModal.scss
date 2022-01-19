@@ -1,0 +1,114 @@
+.MuiDialog-root	{
+	background-color: rgba($color: white, $alpha: 0.8);
+
+	.MuiPaper-root {
+		min-width: 40%;
+		max-width: 80%;
+		width: 60%;
+		border-radius: 30px;
+		background: linear-gradient(158deg, #ffeef2 0%, #fff4ee 25%, #e2ebff 50%, #ede9ff 75%);
+	}
+
+	#new-quote-modal-title {
+		margin-top: 4%;
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+		background-color: #CA4246;
+		background-image: linear-gradient(
+			45deg,
+			#CA4246 40%,
+			#E16541 42%,
+			#E16541 44%,
+			#F18F43 46%,
+			#F18F43 48%,
+			#8B9862 50%,
+			#8B9862 52%,
+			#476098 54%,
+			#476098 56%,
+			#A7489B 58%,
+		);
+		background-size: 100%;
+		background-repeat: repeat;
+   		background-clip: text;
+   		-webkit-background-clip: text;
+   		-webkit-text-fill-color: transparent;
+	}
+
+	.new-quote-form {
+		margin: 2%;
+		display: inline-flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: space-around;
+		align-items: center;
+		width: fit-content;
+		padding: 4%;
+
+
+		.MuiTextField-root {
+			margin-bottom: 10%;
+			padding: 0px;
+
+			.MuiFormLabel-root {
+				font-weight: bold;
+				color: rgb(212, 71, 14);
+			}
+		}
+
+		.MuiFormLabel-root.Mui-focused {
+			color: rgb(212, 71, 14);
+			font-weight: bolder;
+		}
+
+		.MuiOutlinedInput-multiline.Mui-focused fieldset {
+			border: 2px solid orange;
+		}
+
+		.MuiInput-underline:after {
+			border-bottom: 2px solid orange;
+		}
+
+		.MuiFormControl-root {
+			margin: 3%;
+		}
+
+		.new-quote-input {
+			min-width: 20%;
+			width: 456px;
+			max-width: 90%;
+		}
+
+		.new-quote-submit-button {
+			margin-top: 10%;
+			background: linear-gradient(255deg, #97b8ffd5 0%, #aa97ffd5 50%, #ff9797d5 100%);
+			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+			border-radius: 30px;
+			border: 0;
+
+			.MuiButton-label {
+				text-transform: none;
+				font-weight: bold;
+				color: white;
+				line-height: 100%;
+				padding: 10px;
+				text-shadow: h-shadow v-shadow blur-radius black;
+			}
+
+			&:active {
+				background: linear-gradient(
+					35deg,
+					#97a1ffd5 20%,
+					#97e7ffd5 50%,
+					#7af143d5 100%,
+				);
+
+				.MuiButton-label {
+					font-weight: bold;
+					color: white;
+				}
+			}
+		}
+	}
+}
