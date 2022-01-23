@@ -4,4 +4,5 @@ export const DefaultNewQuoteForm: INewQuoteForm = {
 	text: '',
 	source: '',
 	author: '',
+	captcha: '',
 }

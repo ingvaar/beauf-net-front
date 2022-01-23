@@ -1,6 +1,8 @@
 import { Button, Dialog, TextField } from "@material-ui/core";
 import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { QuoteService } from "services/quotes.service";
 import { DefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
 
 import "./scss/NewQuoteModal.scss";
@@ -16,6 +18,8 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 		DefaultNewQuoteForm
 	);
 
+	const recaptchaRef = useRef<ReCAPTCHA>(null);
+
 	function handleChange(event: any) {
 		setError("");
 		setForm({ ...form, [event.target.name]: event.target.value });
@@ -23,6 +27,11 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 
 	async function handleSubmit() {
 		try {
+			const captchaToken = await recaptchaRef?.current?.executeAsync();
+			recaptchaRef?.current?.reset();
+
+			form.captcha = captchaToken as string;
+			await QuoteService.postQuote(form);
 		} catch (error: any) {
 			setError(error.message);
 			setForm(form);
@@ -58,8 +67,13 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 					onChange={handleChange}
 					value={form.author}
 				/>
+				<ReCAPTCHA
+					ref={recaptchaRef}
+					size="invisible"
+					sitekey="6Lf_NSYeAAAAAMy7_aqunGGn_T4tgjfZ-DuoAYlp"
+				/>
 				<div className="new-quote-submit-button">
-					<Button type="submit" onClick={handleSubmit}>Submit</Button>
+					<Button type="submit">Submit</Button>
 				</div>
 			</form>
 			{error.length > 0 && (
