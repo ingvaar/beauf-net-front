@@ -1,4 +1,4 @@
-import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from "@material-ui/core";
+import { Button, ClickAwayListener, Grow, MenuItem, MenuList, Popper } from "@material-ui/core";
 import { FC, PropsWithChildren, useRef, useState } from "react";
 
 import "./scss/ButtonDropdown.scss";
@@ -47,13 +47,13 @@ export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => 
 						{...TransitionProps}
 						style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
 					>
-						<Paper>
+						<div>
 							<ClickAwayListener onClickAway={() => { setIsActive(false) }}>
 								<MenuList autoFocusItem={isActive} id="menu-list-grow">
 									{options}
 								</MenuList>
 							</ClickAwayListener>
-						</Paper>
+						</div>
 					</Grow>
 				)}
 			</Popper>
