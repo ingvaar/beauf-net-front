@@ -1,9 +1,12 @@
-import { Button, Dialog, TextField } from "@material-ui/core";
+import { Button, Dialog, Fab, TextField } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
-import { FC, useRef, useState } from "react";
+import { IQuotePublic } from "interfaces/IQuotePublic.interface";
+import { FC, FormEvent, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { QuoteService } from "services/quotes.service";
 import { DefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
+import { DefaultQuotePublic } from "./constants/DefaultQuotePublic";
 
 import "./scss/NewQuoteModal.scss";
 
@@ -17,6 +20,10 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 	const [form, setForm] = useState<INewQuoteForm>(
 		DefaultNewQuoteForm
 	);
+	const [newQuote, setNewQuote] = useState<IQuotePublic>(
+		DefaultQuotePublic
+	);
+	const [posted, setPosted] = useState<boolean>(false);
 
 	const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -25,18 +32,44 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	async function handleSubmit() {
+	function closeModal(event: any) {
+		event.preventDefault();
+		props.setClose();
+		setPosted(false);
+		setNewQuote(DefaultQuotePublic);
+	}
+
+	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault();
 		try {
 			const captchaToken = await recaptchaRef?.current?.executeAsync();
 			recaptchaRef?.current?.reset();
 
 			form.captcha = captchaToken as string;
-			await QuoteService.postQuote(form);
+			setNewQuote(await QuoteService.postQuote(form));
+			setPosted(true);
 		} catch (error: any) {
 			setError(error.message);
 			setForm(form);
 		}
 	};
+
+	const quoteBody = (
+			<div className="posted-quote-body">
+				<h2 id="posted-quote-title">Quote submitted !</h2>
+				<span id="posted-quote-text">{newQuote.text}</span>
+				{
+					newQuote.source.length > 0 &&
+					<span id="posted-quote-source">{newQuote.source}</span>
+				}
+				<div className="button-close-posted-quote">
+					<Fab aria-label="close" variant="extended" onClick={closeModal}>
+						<Close />
+						Close
+					</Fab>
+				</div>
+			</div>
+	);
 
 	const modalBody = (
 		<div>
@@ -88,12 +121,12 @@ export const NewQuoteModal: FC<Props> = (props: Props) => {
 		<div className="new-quote-modal">
 			<Dialog
 				open={props.open}
-				onClose={props.setClose}
+				onClose={closeModal}
 				aria-labelledby="new-quote-modal-title"
 				aria-describedby="new-quote-modal-description"
 				disableScrollLock={true}
 			>
-				{modalBody}
+				{posted === false ? modalBody : quoteBody}
 			</Dialog>
 		</div>
 	);
