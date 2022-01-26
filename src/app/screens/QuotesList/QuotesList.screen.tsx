@@ -11,7 +11,7 @@ export const QuotesListPage: FC = () => {
 	const [page, setPage] = useState<number>(1);
 	const [perPage, setPerPage] = useState<number>(10);
 	const [total, setTotal] = useState<number>(0);
-	const [newQuoteModalOpen, setNewQuoteModalOpen] = useState(false);
+	const [newQuoteModalOpen, setNewQuoteModalOpen] = useState<boolean>(false);
 
 	const setNewQuoteModalClose = () => {
 		setNewQuoteModalOpen(false);

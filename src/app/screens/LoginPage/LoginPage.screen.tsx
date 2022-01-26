@@ -31,7 +31,7 @@ const LoginPage: FC = () => {
 					throw error;
 				});
 			history.push("/");
-		} catch (error) {
+		} catch (error: any) {
 			setError(error.message);
 			setLoading(false);
 		}
