@@ -4,11 +4,11 @@ import { Edit } from "@material-ui/icons";
 
 import "./scss/ButtonAddQuote.scss";
 
-type Props = {
+interface IProps {
 	openModal: () => void,
 }
 
-export const ButtonAddQuote: FC<Props> = (props: Props) => {
+export const ButtonAddQuote: FC<IProps> = (props: IProps) => {
 	return (
 		<div className="button-add-quote">
 			<Fab aria-label="add quote" variant="extended" onClick={props.openModal}>

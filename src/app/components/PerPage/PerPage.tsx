@@ -3,12 +3,12 @@ import { FC } from "react";
 
 import "./scss/PerPage.scss";
 
-type Props = {
+interface IProps {
 	perPage: number,
 	setPerPage: (perPage: number) => void
 }
 
-export const PerPage: FC<Props> = (props) => {
+export const PerPage: FC<IProps> = (props: IProps) => {
 
 	const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
 		if (event.target.name === "perPage") {
