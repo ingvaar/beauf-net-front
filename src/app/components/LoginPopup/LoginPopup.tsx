@@ -26,7 +26,6 @@ export const LoginPopup: FC<IProps> = () => {
 			<Popper
 				open={isActive}
 				anchorEl={anchorRef.current}
-				role={undefined}
 				transition
 				disablePortal
 				placement="bottom-end"
