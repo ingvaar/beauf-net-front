@@ -3,7 +3,7 @@
 
 	.MuiPaper-root {
 		min-width: 40%;
-		max-width: 80%;
+		max-width: 240px;
 		width: 60%;
 		border-radius: 30px;
 		background: linear-gradient(158deg, #ffeef2 0%, #fff4ee 25%, #e2ebff 50%, #ede9ff 75%);
@@ -35,6 +35,93 @@
    		-webkit-text-fill-color: transparent;
 	}
 
+	.posted-quote-body {
+		margin: 2%;
+		display: inline-flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: space-around;
+		align-items: center;
+		padding: 4%;
+
+		#posted-quote-title {
+			margin-top: 4%;
+			font-family: "Roboto";
+			text-transform: uppercase;
+			font-weight: bolder;
+			background-color: #CA4246;
+			background-image: linear-gradient(
+				45deg,
+				#CA4246 40%,
+				#E16541 42%,
+				#E16541 44%,
+				#F18F43 46%,
+				#F18F43 48%,
+				#8B9862 50%,
+				#8B9862 52%,
+				#476098 54%,
+				#476098 56%,
+				#A7489B 58%,
+			);
+			background-size: 100%;
+			background-repeat: repeat;
+		  		background-clip: text;
+		  		-webkit-background-clip: text;
+		  		-webkit-text-fill-color: transparent;
+		}
+
+		.MuiFab-root {
+			background-color: transparent;
+		}
+
+		#posted-quote-text {
+			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+			border-radius: 20px;
+			border: 0;
+			padding: 10%;
+			font-size: 1.25rem;
+			margin: 6%;
+			font-weight: bold;
+			min-width: 60%;
+		}
+
+		#posted-quote-source {
+			font-size: 1rem;
+			font-style: italic;
+		}
+
+		.button-close-posted-quote {
+			margin-top: 10%;
+			background: linear-gradient(255deg, #97b8ffd5 0%, #aa97ffd5 50%, #ff9797d5 100%);
+			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+			border-radius: 30px;
+			border: 0;
+
+			.MuiFab-label {
+				font-weight: bold;
+				color: white;
+				line-height: 100%;
+				padding: 10px;
+				text-shadow: h-shadow v-shadow blur-radius black;
+			}
+
+			&:active {
+				background: linear-gradient(
+					35deg,
+					#97a1ffd5 20%,
+					#97e7ffd5 50%,
+					#7af143d5 100%,
+				);
+
+				.MuiFab-label {
+					font-weight: bold;
+					color: white;
+				}
+			}
+		}
+	}
+
 	.new-quote-form {
 		margin: 2%;
 		display: inline-flex;
@@ -45,7 +132,6 @@
 		align-items: center;
 		width: fit-content;
 		padding: 4%;
-
 
 		.MuiTextField-root {
 			margin-bottom: 10%;
@@ -80,14 +166,14 @@
 			max-width: 90%;
 		}
 
-		.new-quote-submit-button {
+		.new-quote-submit-button,.button-close-posted-quote {
 			margin-top: 10%;
 			background: linear-gradient(255deg, #97b8ffd5 0%, #aa97ffd5 50%, #ff9797d5 100%);
 			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
 			border-radius: 30px;
 			border: 0;
 
-			.MuiButton-label {
+			.MuiButton-label,.MuiFab-label {
 				text-transform: none;
 				font-weight: bold;
 				color: white;
@@ -104,7 +190,38 @@
 					#7af143d5 100%,
 				);
 
-				.MuiButton-label {
+				.MuiButton-label,.MuiFab-label {
+					font-weight: bold;
+					color: white;
+				}
+			}
+		}
+
+		.button-close-posted-quote {
+			margin-top: 10%;
+			background: linear-gradient(255deg, #97b8ffd5 0%, #aa97ffd5 50%, #ff9797d5 100%);
+			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+			border-radius: 30px;
+			border: 0;
+
+			.MuiFab-label {
+				text-transform: none;
+				font-weight: bold;
+				color: white;
+				line-height: 100%;
+				padding: 10px;
+				text-shadow: h-shadow v-shadow blur-radius black;
+			}
+
+			&:active {
+				background: linear-gradient(
+					35deg,
+					#97a1ffd5 20%,
+					#97e7ffd5 50%,
+					#7af143d5 100%,
+				);
+
+				.MuiFab-label {
 					font-weight: bold;
 					color: white;
 				}
