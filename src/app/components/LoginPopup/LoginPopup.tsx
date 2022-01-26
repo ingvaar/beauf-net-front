@@ -4,10 +4,10 @@ import { FC, useRef, useState } from "react";
 
 import "./scss/LoginPopup.scss";
 
-type Props = {
+interface IProps {
 }
 
-export const LoginPopup: FC<Props> = () => {
+export const LoginPopup: FC<IProps> = () => {
 	const [isActive, setIsActive] = useState(false);
 	const onClick = () => setIsActive(!isActive);
 	const anchorRef = useRef<HTMLButtonElement>(null);

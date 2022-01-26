@@ -5,28 +5,28 @@ import { QuoteService } from "services/quotes.service";
 
 import "./scss/QuotesList.scss";
 
-type Props = {
+interface IProps {
 	page: number,
 	perPage: number
 	setTotal: (total: number) => void
 }
 
-export const QuotesList: FC<Props> = (prop) => {
+export const QuotesList: FC<IProps> = (props: IProps) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 	const [quotes, setQuotes] = useState<IQuotesPublic>();
 
 	useEffect(() => {
 		setLoading(true);
-		QuoteService.getQuotes(prop.perPage, prop.page).then((res: IQuotesPublic) => {
+		QuoteService.getQuotes(props.perPage, props.page).then((res: IQuotesPublic) => {
 			setQuotes(res);
-			prop.setTotal(res.total);
+			props.setTotal(res.total);
 			setLoading(false);
 		}).catch((err) => {
 			setError(err.message);
 			setLoading(false);
 		});
-	}, [prop, prop.page, prop.perPage]);
+	}, [props, props.page, props.perPage]);
 
 	const elements = quotes?.data.map((quote) => {
 		return (

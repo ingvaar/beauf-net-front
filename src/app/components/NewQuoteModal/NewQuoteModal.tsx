@@ -10,12 +10,12 @@ import { DefaultQuotePublic } from "./constants/DefaultQuotePublic";
 
 import "./scss/NewQuoteModal.scss";
 
-type Props = {
+interface IProps {
 	open: boolean,
 	setClose: () => void,
 }
 
-export const NewQuoteModal: FC<Props> = (props: Props) => {
+export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 	const [error, setError] = useState<string>("");
 	const [form, setForm] = useState<INewQuoteForm>(
 		DefaultNewQuoteForm
