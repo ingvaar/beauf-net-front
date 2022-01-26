@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => {
-	const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = useState<boolean>(false);
 	const onClick = () => setIsActive(!isActive);
 	const anchorRef = useRef<HTMLButtonElement>(null);
 
