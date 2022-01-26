@@ -32,11 +32,12 @@ const LoginForm: FC<IProps> = ({
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
-	async function handleSubmit() {
+	async function handleSubmit(event: any) {
+		event.preventDefault();
 		try {
 			AuthService.isValidLoginRegisterForm(form);
 			callback(form);
-		} catch (error) {
+		} catch (error: any) {
 			setError(error.message);
 			setForm({ identifier: form.identifier, password: "" });
 		}
