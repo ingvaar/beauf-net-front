@@ -32,7 +32,6 @@ export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => 
 			<Popper
 				open={isActive}
 				anchorEl={anchorRef.current}
-				role={undefined}
 				transition
 				disablePortal
 				placement="bottom-end"
