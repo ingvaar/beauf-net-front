@@ -11,8 +11,9 @@ interface IProps {
 
 export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => {
 	const [isActive, setIsActive] = useState<boolean>(false);
-	const onClick = () => setIsActive(!isActive);
 	const anchorRef = useRef<HTMLButtonElement>(null);
+
+	const onClick = () => setIsActive(!isActive);
 
 	const options = props.arrayOfData.map((data) =>
 		<MenuItem key={data.key} onClick={data.callback}><span>{data.name}</span></MenuItem>

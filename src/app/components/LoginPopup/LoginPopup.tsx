@@ -9,8 +9,9 @@ interface IProps {
 
 export const LoginPopup: FC<IProps> = () => {
 	const [isActive, setIsActive] = useState<boolean>(false);
-	const onClick = () => setIsActive(!isActive);
 	const anchorRef = useRef<HTMLButtonElement>(null);
+
+	const onClick = () => setIsActive(!isActive);
 
 	return (
 		<div className="login-popup-container">
