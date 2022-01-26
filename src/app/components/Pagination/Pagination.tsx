@@ -2,14 +2,14 @@ import { FC, useEffect, useState } from "react";
 
 import "./scss/Pagination.scss";
 
-type Props = {
+interface IProps {
 	total: number
 	page: number,
 	perPage: number,
 	setPage: (page: number) => void,
 }
 
-export const Pagination: FC<Props> = (props) => {
+export const Pagination: FC<IProps> = (props: IProps) => {
 	const [totalPages, setTotalPages] = useState<number>(0);
 
 	useEffect(() => {

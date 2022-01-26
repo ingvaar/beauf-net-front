@@ -3,13 +3,13 @@ import { FC, PropsWithChildren, useRef, useState } from "react";
 
 import "./scss/ButtonDropdown.scss";
 
-type Props = {
+interface IProps {
 	name: string,
 	buttonID: string,
 	arrayOfData: Array<{ key: string, callback: () => void, name: string }>
 }
 
-export const ButtonDropdown: FC<Props> = (props: PropsWithChildren<Props>) => {
+export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => {
 	const [isActive, setIsActive] = useState(false);
 	const onClick = () => setIsActive(!isActive);
 	const anchorRef = useRef<HTMLButtonElement>(null);
