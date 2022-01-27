@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 
 import { ILoginForm } from "interfaces/ILoginForm.interface";
-import { DefaultLoginForm } from "./constants/DefaultLoginForm.constant";
+import { CDefaultLoginForm } from "./constants/DefaultLoginForm.constant";
 import { AuthService } from "services/auth.service";
 
 import "./scss/LoginForm.scss";
@@ -20,7 +20,7 @@ const LoginForm: FC<IProps> = ({
 }) => {
 	const [error, setError] = useState<string>("");
 	const [form, setForm] = useState<ILoginForm>(
-		DefaultLoginForm
+		CDefaultLoginForm
 	);
 
 	useEffect(() => {
