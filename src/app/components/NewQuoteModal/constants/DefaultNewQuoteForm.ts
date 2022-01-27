@@ -1,6 +1,6 @@
 import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
 
-export const DefaultNewQuoteForm: INewQuoteForm = {
+export const CDefaultNewQuoteForm: INewQuoteForm = {
 	text: '',
 	source: '',
 	author: '',

@@ -1,6 +1,6 @@
 import { ILoginForm } from "interfaces/ILoginForm.interface";
 
-export const DefaultLoginForm: ILoginForm = {
+export const CDefaultLoginForm: ILoginForm = {
 	identifier: '',
 	password: '',
 }
