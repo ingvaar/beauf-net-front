@@ -1,8 +1,10 @@
 import { CircularProgress, Fab } from "@material-ui/core";
 import { Cancel, CheckCircleOutline } from "@material-ui/icons";
+import { addQuoteToTrash, removeQuoteFromTrash, selectTrash } from "features/trash/trashSlice";
+import { useAppSelector, useAppDispatch } from "hooks";
 import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
-import { IQuotesPrivate } from "interfaces/IQuotesPrivate.interface";
-import { FC, useEffect, useState } from "react";
+import { IQuotesPrivatePage } from "interfaces/IQuotesPrivatePage.interface";
+import { FC, useEffect, useState, useMemo } from "react";
 import { QuoteService } from "services/quotes.service";
 
 interface IProps {
@@ -12,13 +14,26 @@ interface IProps {
 }
 
 export const AdminQuotesList: FC<IProps> = (props: IProps) => {
+	const trash = useAppSelector(selectTrash);
+	const dispatch = useAppDispatch();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
-	const [quotes, setQuotes] = useState<IQuotesPrivate>();
+	const [quotes, setQuotes] = useState<IQuotesPrivatePage>();
+
+	const quotesDisplay = useMemo<Array<IQuotePrivate>>(() => {
+		if (quotes === undefined) {
+			return [];
+		}
+		return quotes?.data.filter((quote) => {
+			return !trash.some((trashQuote: IQuotePrivate) => {
+				return (quote.id === trashQuote.id);
+			});
+		});
+	}, [trash, quotes]);
 
 	useEffect(() => {
 		setLoading(true);
-		QuoteService.getUnvalidatedQuotes(props.perPage, props.page).then((res: IQuotesPrivate) => {
+		QuoteService.getUnvalidatedQuotes(props.perPage, props.page).then((res: IQuotesPrivatePage) => {
 			setQuotes(res);
 			props.setTotal(res.total);
 			setLoading(false);
@@ -28,7 +43,7 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 		});
 	}, [props, props.page, props.perPage]);
 
-	const elements = quotes?.data.map((quote: IQuotePrivate) => {
+	const elements = quotesDisplay.map((quote: IQuotePrivate) => {
 		return (
 			<div key={quote.id} className="item">
 				<div className="quote">
@@ -65,13 +80,39 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 				</div>
 
 				<Fab aria-label="delete quote" onClick={() => {
-					QuoteService.deleteQuote(quote.id);
+					dispatch(addQuoteToTrash(quote));
 				}}>
 					<Cancel />
 				</Fab>
 
 				<Fab aria-label="validate quote" onClick={() => {
 					QuoteService.validateQuote(quote.id);
+				}}>
+					<CheckCircleOutline />
+				</Fab>
+
+			</div>
+		);
+	});
+
+	const trashList = trash.map((quote: IQuotePrivate) => {
+		return (
+			<div key={quote.id} className="item">
+				<div className="quote">
+					<span>
+						{quote.text}
+					</span>
+				</div>
+
+				<Fab aria-label="delete quote" onClick={() => {
+					QuoteService.deleteQuote(quote.id);
+					dispatch(removeQuoteFromTrash(quote))
+				}}>
+					<Cancel />
+				</Fab>
+
+				<Fab aria-label="validate quote" onClick={() => {
+					dispatch(removeQuoteFromTrash(quote))
 				}}>
 					<CheckCircleOutline />
 				</Fab>
@@ -100,6 +141,7 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 			<div className="list column">
 				{elements}
 			</div>
+			{trashList}
 		</div>
 	);
 }
