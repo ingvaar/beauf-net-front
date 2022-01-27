@@ -37,6 +37,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 		props.setClose();
 		setPosted(false);
 		setNewQuote(CDefaultQuotePublic);
+		setError("");
 	}
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
