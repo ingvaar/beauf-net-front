@@ -11,7 +11,7 @@ import "./scss/Menubar.scss";
 
 export const Menubar: FC = () => {
 	const user: IUser = useAppSelector(selectUser);
-	let dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 	const history = useHistory();
 
 	const handleSignOut = () => {

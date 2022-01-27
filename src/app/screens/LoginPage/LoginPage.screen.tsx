@@ -13,7 +13,7 @@ const LoginPage: FC = () => {
 	const history = useHistory();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
-	let dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 
 	const handleSubmit = async (
 		registerForm: ILoginForm
