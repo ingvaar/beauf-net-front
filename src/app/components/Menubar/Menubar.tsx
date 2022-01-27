@@ -17,6 +17,11 @@ export const Menubar: FC = () => {
 	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
 		dispatch(deleteUser());
+		history.push("/");
+	}
+
+	const adminPanel = () => {
+		history.push("/admin");
 	}
 
 	const home = () => {
@@ -42,8 +47,13 @@ export const Menubar: FC = () => {
 		const array = [
 			{
 				key: "1",
+				name: "Admin Panel",
+				callback: adminPanel,
+			},
+			{
+				key: "2",
 				name: "Logout",
-				callback: handleSignOut
+				callback: handleSignOut,
 			},
 		]
 

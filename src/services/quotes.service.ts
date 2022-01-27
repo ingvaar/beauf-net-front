@@ -1,6 +1,6 @@
 import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
 import { IQuotePublic } from "interfaces/IQuotePublic.interface";
-import { IQuotesPublic } from "interfaces/IQuotesPublics.interface";
+import { IQuotesPublic } from "interfaces/IQuotesPublic.interface";
 import { get } from "lodash";
 import { ApiService } from "./api.service";
 import { EQuotesErrors } from "./enums/EQuotesErrors.enum";
@@ -9,8 +9,32 @@ export class QuoteService {
 	public static async getQuotes(perPage: number, page: number): Promise<IQuotesPublic> {
 		try {
 			return await ApiService.get(`/quotes?perPage=${perPage}&page=${page}`).then((res: any) => res);
-		} catch (error) {
+		} catch (error: any) {
 			throw new Error("Error while fetching quotes: " + error);
+		}
+	}
+
+	public static async validateQuote(id: string) {
+		try {
+			return await ApiService.post(`/quotes/${id}/validate`).then((res: any) => res);
+		} catch (error: any) {
+			throw new Error("Error while validating quote: " + error);
+		}
+	}
+
+	public static async deleteQuote(id: string): Promise<IQuotePublic> {
+		try {
+			return await ApiService.delete(`/quotes/${id}`).then((res: any) => res);
+		} catch (error: any) {
+			throw new Error("Error while deleting quote: " + error);
+		}
+	}
+
+	public static async getUnvalidatedQuotes(perPage: number, page: number) {
+		try {
+			return await ApiService.get(`/quotes/unvalidated?perPage=${perPage}&page=${page}`).then((res: any) => res);
+		} catch (error: any) {
+			throw new Error("Error while fetching unvalidated quotes: " + error);
 		}
 	}
 
