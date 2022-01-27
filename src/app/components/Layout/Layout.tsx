@@ -6,7 +6,7 @@ import { AuthService } from "services/auth.service";
 import { Menubar } from "../Menubar/Menubar"
 
 export const Layout: FC = ({ children }) => {
-	let dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		AuthService
