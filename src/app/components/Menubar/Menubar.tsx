@@ -39,11 +39,12 @@ export const Menubar: FC = () => {
 	}
 
 	const drop = () => {
-		const array = [{
-			key: "1",
-			name: "Logout",
-			callback: handleSignOut
-		},
+		const array = [
+			{
+				key: "1",
+				name: "Logout",
+				callback: handleSignOut
+			},
 		]
 
 		return (
