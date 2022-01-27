@@ -5,8 +5,8 @@ import { IQuotePublic } from "interfaces/IQuotePublic.interface";
 import { FC, FormEvent, useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { QuoteService } from "services/quotes.service";
-import { DefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
-import { DefaultQuotePublic } from "./constants/DefaultQuotePublic";
+import { CDefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
+import { CDefaultQuotePublic } from "./constants/DefaultQuotePublic";
 
 import "./scss/NewQuoteModal.scss";
 
@@ -18,10 +18,10 @@ interface IProps {
 export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 	const [error, setError] = useState<string>("");
 	const [form, setForm] = useState<INewQuoteForm>(
-		DefaultNewQuoteForm
+		CDefaultNewQuoteForm
 	);
 	const [newQuote, setNewQuote] = useState<IQuotePublic>(
-		DefaultQuotePublic
+		CDefaultQuotePublic
 	);
 	const [posted, setPosted] = useState<boolean>(false);
 
@@ -36,7 +36,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 		event.preventDefault();
 		props.setClose();
 		setPosted(false);
-		setNewQuote(DefaultQuotePublic);
+		setNewQuote(CDefaultQuotePublic);
 	}
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {

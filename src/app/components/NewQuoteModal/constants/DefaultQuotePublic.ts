@@ -1,6 +1,6 @@
 import { IQuotePublic } from "interfaces/IQuotePublic.interface";
 
-export const DefaultQuotePublic: IQuotePublic = {
+export const CDefaultQuotePublic: IQuotePublic = {
 	text: '',
 	source: '',
 	id: '',
