@@ -57,7 +57,7 @@ export class AuthService {
 				.then((res: any) => res);
 
 			window.localStorage.setItem("token", res.token);
-		} catch (error) {
+		} catch (error: any) {
 			const readableError: string | undefined = get(
 				EAuthErrors,
 				error.response.data.message
@@ -77,7 +77,7 @@ export class AuthService {
 				return false;
 			}
 			return await UserService.fetchMe();
-		} catch (error) {
+		} catch (error: any) {
 			window.localStorage.clear();
 			throw new Error(error.message);
 		}
