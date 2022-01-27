@@ -47,7 +47,7 @@ export const ButtonDropdown: FC<IProps> = (props: PropsWithChildren<IProps>) => 
 						{...TransitionProps}
 						style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
 					>
-						<div>
+						<div className="content">
 							<ClickAwayListener onClickAway={() => { setIsActive(false) }}>
 								<MenuList autoFocusItem={isActive} id="menu-list-grow">
 									{options}

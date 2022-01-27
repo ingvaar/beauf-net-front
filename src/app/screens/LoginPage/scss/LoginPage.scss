@@ -6,4 +6,13 @@
 	#login-component {
 		margin-top: 2%;
 	}
+
+	.loader {
+		background-color: transparent;
+		margin-top: 10%;
+
+		.MuiCircularProgress-root {
+			color: #aa97ff;
+		}
+	}
 }

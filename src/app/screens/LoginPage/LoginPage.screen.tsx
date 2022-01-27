@@ -8,6 +8,7 @@ import { IUser } from "interfaces/IUser.interface";
 import { updateUser } from "features/user/userSlice";
 
 import "./scss/LoginPage.scss";
+import { CircularProgress } from "@material-ui/core";
 
 const LoginPage: FC = () => {
 	const history = useHistory();
@@ -37,15 +38,6 @@ const LoginPage: FC = () => {
 		}
 	};
 
-	if (loading) {
-		// TODO : refacto
-		return (
-			<div className="loader">
-				<h5>loading...</h5>
-			</div>
-		);
-	}
-
 	if (window.localStorage.getItem("token")) {
 		history.push('/');
 	}
@@ -57,6 +49,12 @@ const LoginPage: FC = () => {
 				parentError={error}
 				callback={handleSubmit}
 			/>
+			{
+				loading &&
+				<div className="loader">
+					<CircularProgress />
+				</div>
+			}
 		</div>
 	);
 };
