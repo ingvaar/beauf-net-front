@@ -3,7 +3,7 @@ import { IQuotePublic } from "interfaces/IQuotePublic.interface";
 import { IQuotesPublic } from "interfaces/IQuotesPublics.interface";
 import { get } from "lodash";
 import { ApiService } from "./api.service";
-import { EAuthErrors } from "./enums/EAuthErros.enum";
+import { EQuotesErrors } from "./enums/EQuotesErros.enum";
 
 export class QuoteService {
 	public static async getQuotes(perPage: number, page: number): Promise<IQuotesPublic> {
@@ -22,14 +22,14 @@ export class QuoteService {
 			return res
 		} catch (error: any) {
 			const readableError: string | undefined = get(
-				EAuthErrors,
+				EQuotesErrors,
 				error.response.data.message
 			);
 
 			if (readableError) {
 				throw new Error(readableError);
 			} else {
-				throw new Error("Error while creating new quote.");
+				throw new Error("Cannot create quote");
 			}
 		}
 	};

@@ -36,6 +36,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 		event.preventDefault();
 		props.setClose();
 		setPosted(false);
+		setError("");
 		setNewQuote(CDefaultQuotePublic);
 	}
 
