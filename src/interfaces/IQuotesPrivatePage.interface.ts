@@ -1,6 +1,6 @@
 import { IQuotePrivate } from "./IQuotePrivate.interface";
 
-export interface IQuotesPrivate {
+export interface IQuotesPrivatePage {
 	page: number,
 	perPage: number,
 	total: number,
