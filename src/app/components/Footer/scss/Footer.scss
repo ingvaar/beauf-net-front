@@ -1,0 +1,50 @@
+#footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: stretch;
+	width: 100%;
+    margin: auto 0 2%;
+
+	.copyright {
+		display: flex;
+		align-items: center;
+
+		.MuiSvgIcon-root {
+			transform: scale(0.8);
+		}
+
+		#heart {
+			color: rgb(187, 13, 13)
+		}
+
+		#copyright {
+			transform: scale(0.6);
+		}
+
+		a {
+			margin-left: 5px;
+			text-decoration: none;
+			color: black;
+			font-weight: bold;
+		}
+	}
+
+	.utils {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: stretch;
+
+		span {
+			cursor: pointer;
+			font-family: "Roboto";
+			font-size: 1rem;
+			margin-bottom: 2%;
+
+			&:hover {
+				color: #ec905e;
+			}
+		}
+	}
+}

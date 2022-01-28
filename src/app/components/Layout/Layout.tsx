@@ -3,6 +3,7 @@ import { useAppDispatch } from "hooks";
 import { IUser } from "interfaces/IUser.interface";
 import { FC, useEffect } from "react"
 import { AuthService } from "services/auth.service";
+import { FooterComponent } from "../Footer/Footer";
 import { Menubar } from "../Menubar/Menubar"
 
 export const Layout: FC = ({ children }) => {
@@ -22,7 +23,7 @@ export const Layout: FC = ({ children }) => {
 		<div id='layout' className='column'>
 			<Menubar />
 			<main>{children}</main>
-			<footer />
+			<FooterComponent />
 		</div>
 	)
 }
