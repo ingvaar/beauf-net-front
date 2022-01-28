@@ -2,23 +2,115 @@
 	background-color: rgba($color: white, $alpha: 0.8);
 
 	.MuiPaper-root {
-		min-width: 40%;
-		max-width: 240px;
+		min-width: 50%;
+		max-width: 400px;
 		width: 60%;
+		min-height: 20%;
 		border-radius: 30px;
 		background: linear-gradient(158deg, #ffeef2 0%, #fff4ee 25%, #e2ebff 50%, #ede9ff 75%);
+		display: flex;
+   		flex-direction: column;
+   		align-items: center;
 	}
 
-	.new-quote-form {
-		margin: 2%;
-		display: inline-flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		align-content: center;
-		justify-content: space-around;
-		align-items: center;
-		width: fit-content;
-		padding: 4%;
+	#trash-modal-title {
+		margin-top: 4%;
+		margin-bottom: 4%;
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+		background-color: #CA4246;
+		background-image: linear-gradient(
+			45deg,
+			#CA4246 40%,
+			#E16541 42%,
+			#E16541 44%,
+			#F18F43 46%,
+			#F18F43 48%,
+			#8B9862 50%,
+			#8B9862 52%,
+			#476098 54%,
+			#476098 56%,
+			#A7489B 58%,
+		);
+		background-size: 100%;
+		background-repeat: repeat;
+   		background-clip: text;
+   		-webkit-background-clip: text;
+   		-webkit-text-fill-color: transparent;
+	}
+
+	#empty {
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+	}
+
+	.item {
+		box-shadow: 2px 2px 8px 3px rgba(255, 105, 135, 0.15);
+		border-radius: 20px;
+		border: 0;
+		padding: 15px;
+		margin: 15px;
 		max-width: 80%;
+		width: 80%;
+
+		.footer {
+			justify-content: space-between;
+			margin-top: 10px;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.column {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+		}
+
+		p {
+			margin: 0px;
+		}
+
+		span, p {
+			color: black;
+			overflow-wrap: break-word;
+			hyphens: auto, German rules;
+		}
+
+		.quote {
+			font-size: 1rem;
+			font-weight: 600;
+		}
+
+		.buttons {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			margin-top: 2%;
+
+			.delete {
+				background: linear-gradient(45deg, #ff0000ab 30%, #e9631ba6 70%);
+			}
+
+			.restore {
+				background: linear-gradient(45deg, #00ff00ab 30%, #1be9bca6 70%);
+			}
+
+			.admin-button {
+				width: 40px;
+				height: 40px;
+
+				.MuiFab-label {
+					color: white;
+				}
+
+				.MuiSvgIcon-root {
+					transform: scale(1.5);
+				}
+			}
+		}
 	}
 }
