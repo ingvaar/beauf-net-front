@@ -71,7 +71,7 @@ export const Menubar: FC = () => {
 		})
 
 		return (
-			<ButtonDropdown arrayOfData={array} name="Admin" buttonID="admin" />
+			<ButtonDropdown arrayOfData={array} name={user.username[0].toUpperCase() + user.username.substr(1).toLowerCase()} buttonID="drop-button" />
 		);
 	}
 
