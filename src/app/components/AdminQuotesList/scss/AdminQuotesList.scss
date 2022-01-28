@@ -1,0 +1,86 @@
+.admin-quotes-list {
+	margin: auto;
+	width:100%;
+
+	.list {
+		margin: auto;
+		display: flex;
+		flex-wrap: wrap;
+		max-width: 700px;
+
+		.item {
+			box-shadow: 2px 2px 8px 3px rgba(255, 105, 135, 0.15);
+			border-radius: 20px;
+			border: 0;
+			padding: 15px;
+			margin: 15px;
+			max-width: 100%;
+			width: 100%;
+
+			.footer {
+				justify-content: space-between;
+				margin-top: 10px;
+			}
+
+			.flex {
+				display: flex;
+			}
+
+			.column {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: wrap;
+			}
+
+			p {
+				margin: 0px;
+			}
+
+			span, p {
+				color: black;
+				overflow-wrap: break-word;
+				hyphens: auto, German rules;
+			}
+
+			.quote {
+				font-size: 1.125rem;
+				font-weight: 600;
+			}
+
+			.date {
+				text-align: right;
+
+				span {
+					&:first-child {
+						font-size: 0.8rem;
+						font-weight: 200;
+					}
+
+					&:last-child {
+						font-size: 0.6rem;
+					}
+				}
+			}
+
+			.source-author {
+				font-size: 0.925rem;
+				font-style: italic;
+				padding: auto;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: 5%;
+				text-align: left;
+
+				span {
+					&:first-child {
+						font-weight: 400;
+					}
+
+					&:last-child {
+						font-size: 0.8rem;
+					}
+				}
+			}
+		}
+	}
+}

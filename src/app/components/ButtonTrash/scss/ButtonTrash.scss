@@ -1,0 +1,41 @@
+.button-trash {
+	position: fixed;
+    top: 86vh;
+    right: 6vw;
+
+	.trash-count {
+		position: fixed;
+		border-radius: 60px;
+		border: 0;
+		width: 30px;
+		height: 30px;
+		background: red;
+		top: 85vh;
+		right: 6vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+		font-size: 1.2rem;
+		color: white;
+	}
+
+	.MuiButtonBase-root {
+		background: linear-gradient(45deg, #ff97af 30%, #ec905e 70%);
+		box-shadow: 0 3px 5px 2px rgba(255, 105, 135, .3);
+		border-radius: 60px;
+		border: 0;
+		width: 76px;
+		height: 76px;
+
+		.MuiFab-label {
+			color: white;
+		}
+
+		.MuiSvgIcon-root {
+			transform: scale(2);
+		}
+	}
+}

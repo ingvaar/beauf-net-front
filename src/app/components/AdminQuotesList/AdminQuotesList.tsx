@@ -1,11 +1,13 @@
 import { CircularProgress, Fab } from "@material-ui/core";
 import { Cancel, CheckCircleOutline } from "@material-ui/icons";
-import { addQuoteToTrash, removeQuoteFromTrash, selectTrash } from "features/trash/trashSlice";
+import { addQuoteToTrash, selectTrash } from "features/trash/trashSlice";
 import { useAppSelector, useAppDispatch } from "hooks";
 import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
 import { IQuotesPrivatePage } from "interfaces/IQuotesPrivatePage.interface";
 import { FC, useEffect, useState, useMemo } from "react";
 import { QuoteService } from "services/quotes.service";
+
+import "./scss/AdminQuotesList.scss";
 
 interface IProps {
 	page: number,
@@ -53,18 +55,18 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 				</div>
 
 				<div className="flex footer">
-					<div className="source">
+					<div className="source-author column">
 						<span>
+							{"Source: "}
 							{quote.source ? (
 								quote.source
 							) : (
 								"Unknown"
 							)}
 						</span>
-					</div>
 
-					<div className="author">
 						<span>
+							{"Author: "}
 							{quote.author ? (
 								quote.author
 							) : (
@@ -95,32 +97,6 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 		);
 	});
 
-	const trashList = trash.map((quote: IQuotePrivate) => {
-		return (
-			<div key={quote.id} className="item">
-				<div className="quote">
-					<span>
-						{quote.text}
-					</span>
-				</div>
-
-				<Fab aria-label="delete quote" onClick={() => {
-					QuoteService.deleteQuote(quote.id);
-					dispatch(removeQuoteFromTrash(quote))
-				}}>
-					<Cancel />
-				</Fab>
-
-				<Fab aria-label="validate quote" onClick={() => {
-					dispatch(removeQuoteFromTrash(quote))
-				}}>
-					<CheckCircleOutline />
-				</Fab>
-
-			</div>
-		);
-	});
-
 	if (loading) {
 		return (
 			<div className="quotes-list loader">
@@ -141,7 +117,6 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 			<div className="list column">
 				{elements}
 			</div>
-			{trashList}
 		</div>
 	);
 }
