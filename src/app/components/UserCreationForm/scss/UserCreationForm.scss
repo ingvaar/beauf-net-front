@@ -1,0 +1,21 @@
+.user-creation {
+	#new-user-form-title {
+		margin-bottom: 4%;
+	}
+
+	.new-user-form {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-content: center;
+		align-items: center;
+
+		.MuiTextField-root {
+			margin-bottom: 2%;
+		}
+
+		.new-user-submit-button {
+			margin-bottom: 6%;
+		}
+	}
+}
