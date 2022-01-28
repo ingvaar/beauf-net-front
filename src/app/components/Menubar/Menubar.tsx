@@ -24,6 +24,10 @@ export const Menubar: FC = () => {
 		history.push("/admin");
 	}
 
+	const userPanel = () => {
+		// TODO
+	}
+
 	const home = () => {
 		return (
 			<Button className="home" id="home" onClick={() => history.push("/")}>Beauf.net</Button>
@@ -47,15 +51,24 @@ export const Menubar: FC = () => {
 		const array = [
 			{
 				key: "1",
-				name: "Admin Panel",
-				callback: adminPanel,
-			},
-			{
-				key: "2",
-				name: "Logout",
-				callback: handleSignOut,
+				name: "Profile",
+				callback: userPanel,
 			},
 		]
+
+		if (user.role.length > 0 && user.role === "admin") {
+			array.push({
+				key: "2",
+				name: "Admin Panel",
+				callback: adminPanel,
+			});
+		}
+
+		array.push({
+			key: "3",
+			name: "Logout",
+			callback: handleSignOut,
+		})
 
 		return (
 			<ButtonDropdown arrayOfData={array} name="Admin" buttonID="admin" />
