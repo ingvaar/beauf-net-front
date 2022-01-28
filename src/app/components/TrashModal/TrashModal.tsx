@@ -1,5 +1,5 @@
 import { Dialog, Fab } from "@material-ui/core";
-import { Cancel, DeleteForever, SettingsBackupRestore } from "@material-ui/icons";
+import { Close, DeleteForever, SettingsBackupRestore } from "@material-ui/icons";
 import { selectTrash, removeQuoteFromTrash } from "features/trash/trashSlice";
 import { useAppSelector, useAppDispatch } from "hooks";
 import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
@@ -44,7 +44,7 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 						QuoteService.deleteQuote(quote.id);
 						dispatch(removeQuoteFromTrash(quote))
 					}}>
-						<Cancel />
+						<Close />
 					</Fab>
 
 					<Fab aria-label="restore" className="restore admin-button" onClick={() => {
