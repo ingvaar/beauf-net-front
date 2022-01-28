@@ -1,5 +1,5 @@
 import { Dialog, Fab } from "@material-ui/core";
-import { Cancel, SettingsBackupRestore } from "@material-ui/icons";
+import { Cancel, DeleteForever, SettingsBackupRestore } from "@material-ui/icons";
 import { selectTrash, removeQuoteFromTrash } from "features/trash/trashSlice";
 import { useAppSelector, useAppDispatch } from "hooks";
 import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
@@ -20,6 +20,14 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 	function closeModal(event: any) {
 		event.preventDefault();
 		props.setClose();
+	}
+
+	const emptyTrash = () => {
+		trash.map((quote) => {
+			QuoteService.deleteQuote(quote.id);
+			dispatch(removeQuoteFromTrash(quote))
+			return trash
+		})
 	}
 
 	const trashList = trash.map((quote: IQuotePrivate) => {
@@ -59,6 +67,14 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 				disableScrollLock={true}
 			>
 				<h2 id="trash-modal-title">Trash</h2>
+				{
+					trash.length > 1 &&
+					<Fab aria-label="empty" className="empty" onClick={() => {
+						emptyTrash();
+					}}>
+						<DeleteForever />
+					</Fab>
+				}
 				{
 					(trash.length > 0 &&
 					trashList) ||

@@ -2,9 +2,9 @@
 	background-color: rgba($color: white, $alpha: 0.8);
 
 	.MuiPaper-root {
-		min-width: 50%;
+		min-width: 60%;
 		max-width: 400px;
-		width: 60%;
+		width: 80%;
 		min-height: 20%;
 		border-radius: 30px;
 		background: linear-gradient(158deg, #ffeef2 0%, #fff4ee 25%, #e2ebff 50%, #ede9ff 75%);
@@ -13,9 +13,22 @@
    		align-items: center;
 	}
 
+	.empty {
+		background: linear-gradient(45deg, #ff0000ab 30%, #e9631ba6 70%);
+		margin-top: 2%;
+		margin-bottom: 2%;
+
+		.MuiFab-label {
+			color: white;
+		}
+
+		.MuiSvgIcon-root {
+			transform: scale(1.5);
+		}
+	}
+
 	#trash-modal-title {
 		margin-top: 4%;
-		margin-bottom: 4%;
 		font-family: "Roboto";
 		text-transform: uppercase;
 		font-weight: bolder;
@@ -44,6 +57,7 @@
 		font-family: "Roboto";
 		text-transform: uppercase;
 		font-weight: bolder;
+		margin-top: 4%;
 	}
 
 	.item {
