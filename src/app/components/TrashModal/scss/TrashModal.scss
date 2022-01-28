@@ -1,0 +1,24 @@
+.MuiDialog-root	{
+	background-color: rgba($color: white, $alpha: 0.8);
+
+	.MuiPaper-root {
+		min-width: 40%;
+		max-width: 240px;
+		width: 60%;
+		border-radius: 30px;
+		background: linear-gradient(158deg, #ffeef2 0%, #fff4ee 25%, #e2ebff 50%, #ede9ff 75%);
+	}
+
+	.new-quote-form {
+		margin: 2%;
+		display: inline-flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-content: center;
+		justify-content: space-around;
+		align-items: center;
+		width: fit-content;
+		padding: 4%;
+		max-width: 80%;
+	}
+}
