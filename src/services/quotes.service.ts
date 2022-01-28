@@ -22,6 +22,14 @@ export class QuoteService {
 		}
 	}
 
+	public static async unvalidateQuote(id: string) {
+		try {
+			return await ApiService.post(`/quotes/${id}/unvalidate`).then((res: any) => res);
+		} catch (error: any) {
+			throw new Error("Error while validating quote: " + error);
+		}
+	}
+
 	public static async deleteQuote(id: string): Promise<IQuotePublic> {
 		try {
 			return await ApiService.delete(`/quotes/${id}`).then((res: any) => res);

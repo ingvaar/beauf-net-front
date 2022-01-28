@@ -1,6 +1,11 @@
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Fab } from "@material-ui/core";
+import { Block } from "@material-ui/icons";
+import { selectUser } from "features/user/userSlice";
+import { useAppSelector } from "hooks";
+import { IQuotePublic } from "interfaces/IQuotePublic.interface";
 import { IQuotesPublic } from "interfaces/IQuotesPublic.interface";
-import { FC, useEffect, useState } from "react";
+import { IUser } from "interfaces/IUser.interface";
+import { FC, useEffect, useMemo, useState } from "react";
 import { QuoteService } from "services/quotes.service";
 
 import "./scss/QuotesList.scss";
@@ -12,9 +17,17 @@ interface IProps {
 }
 
 export const QuotesList: FC<IProps> = (props: IProps) => {
+	const user: IUser = useAppSelector(selectUser);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 	const [quotes, setQuotes] = useState<IQuotesPublic>();
+
+	const quotesDisplay = useMemo<Array<IQuotePublic>>(() => {
+		if (quotes === undefined) {
+			return [];
+		}
+		return quotes.data;
+	}, [quotes]);
 
 	useEffect(() => {
 		setLoading(true);
@@ -28,13 +41,32 @@ export const QuotesList: FC<IProps> = (props: IProps) => {
 		});
 	}, [props, props.page, props.perPage]);
 
-	const elements = quotes?.data.map((quote) => {
+	const unvalidateQuote = (id: string) => {
+		if (quotes !== undefined) {
+			const tempQuotes = Object.assign(quotesDisplay);
+			tempQuotes.data = quotes.data.filter((q) => {
+				return !(id === q.id)
+			});
+			tempQuotes.total -= 1;
+			setQuotes(tempQuotes);
+			QuoteService.unvalidateQuote(id);
+		}
+	}
+
+	const elements = quotesDisplay.map((quote) => {
 		return (
 			<div key={quote.id} className="item">
 				<div className="quote">
 					<span>
 						{quote.text}
 					</span>
+					{ user.role !== "user" && user.role.length > 0 &&
+						<Fab aria-label="unvalidate" className="unvalidate" onClick={() => {
+							unvalidateQuote(quote.id);
+						}}>
+							<Block />
+						</Fab>
+					}
 				</div>
 
 				<div className="flex footer">
