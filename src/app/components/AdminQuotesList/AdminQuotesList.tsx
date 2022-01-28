@@ -1,5 +1,5 @@
 import { CircularProgress, Fab } from "@material-ui/core";
-import { Cancel, CheckCircleOutline } from "@material-ui/icons";
+import { Check, Close } from "@material-ui/icons";
 import { addQuoteToTrash, selectTrash } from "features/trash/trashSlice";
 import { useAppSelector, useAppDispatch } from "hooks";
 import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
@@ -45,6 +45,18 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 		});
 	}, [props, props.page, props.perPage]);
 
+	const validateQuote = (id: string) => {
+		if (quotes !== undefined) {
+			const tempQuotes = Object.assign(quotesDisplay);
+			tempQuotes.data = quotes.data.filter((q) => {
+				return !(id === q.id)
+			});
+			tempQuotes.total -= 1;
+			setQuotes(tempQuotes);
+			QuoteService.validateQuote(id);
+		}
+	};
+
 	const elements = quotesDisplay.map((quote: IQuotePrivate) => {
 		return (
 			<div key={quote.id} className="item">
@@ -81,18 +93,19 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 					</div>
 				</div>
 
-				<Fab aria-label="delete quote" onClick={() => {
-					dispatch(addQuoteToTrash(quote));
-				}}>
-					<Cancel />
-				</Fab>
+				<div className="buttons">
+					<Fab aria-label="delete" className="delete admin-button" onClick={() => {
+						dispatch(addQuoteToTrash(quote));
+					}}>
+						<Close />
+					</Fab>
 
-				<Fab aria-label="validate quote" onClick={() => {
-					QuoteService.validateQuote(quote.id);
-				}}>
-					<CheckCircleOutline />
-				</Fab>
-
+					<Fab aria-label="validate" className="validate admin-button" onClick={() => {
+						validateQuote(quote.id);
+					}}>
+						<Check />
+					</Fab>
+				</div>
 			</div>
 		);
 	});
