@@ -6,9 +6,9 @@ import { AuthService } from "services/auth.service";
 import { useAppDispatch } from "hooks";
 import { IUser } from "interfaces/IUser.interface";
 import { updateUser } from "features/user/userSlice";
+import { CircularProgress } from "@material-ui/core";
 
 import "./scss/LoginPage.scss";
-import { CircularProgress } from "@material-ui/core";
 
 const LoginPage: FC = () => {
 	const history = useHistory();
