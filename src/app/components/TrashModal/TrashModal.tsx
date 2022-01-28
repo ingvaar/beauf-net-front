@@ -31,19 +31,20 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 					</span>
 				</div>
 
-				<Fab aria-label="delete quote" onClick={() => {
-					QuoteService.deleteQuote(quote.id);
-					dispatch(removeQuoteFromTrash(quote))
-				}}>
-					<Cancel />
-				</Fab>
+				<div className="buttons">
+					<Fab aria-label="delete" className="delete admin-button" onClick={() => {
+						QuoteService.deleteQuote(quote.id);
+						dispatch(removeQuoteFromTrash(quote))
+					}}>
+						<Cancel />
+					</Fab>
 
-				<Fab aria-label="validate quote" onClick={() => {
-					dispatch(removeQuoteFromTrash(quote))
-				}}>
-					<SettingsBackupRestore />
-				</Fab>
-
+					<Fab aria-label="restore" className="restore admin-button" onClick={() => {
+						dispatch(removeQuoteFromTrash(quote))
+					}}>
+						<SettingsBackupRestore />
+					</Fab>
+				</div>
 			</div>
 		);
 	});
@@ -57,7 +58,7 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 				aria-describedby="new-quote-modal-description"
 				disableScrollLock={true}
 			>
-				<h2>Trash</h2>
+				<h2 id="trash-modal-title">Trash</h2>
 				{
 					(trash.length > 0 &&
 					trashList) ||
