@@ -38,6 +38,22 @@ export const UserCreationForm: FC = () => {
 		}
 	};
 
+	const checkEmail = (event: any) => {
+		if (event.target.value.length > 0 && event.target.value !== form.email) {
+			setError("Email dont match");
+		} else {
+			setError("");
+		}
+	}
+
+	const checkPassword = (event: any) => {
+		if (event.target.value.length > 0 && event.target.value !== form.password) {
+			setError("Password dont match");
+		} else {
+			setError("");
+		}
+	}
+
 	const submittedUserBody = (
 			<div className="submitted-user-body">
 				<h2 id="submitted-user-title">Thanks for submitting !</h2>
@@ -75,6 +91,7 @@ export const UserCreationForm: FC = () => {
 					label="Confirm email"
 					name="confirm-email"
 					variant="outlined"
+					onChange={checkEmail}
 				/>
 				<TextField
 					id="standard"
@@ -91,6 +108,7 @@ export const UserCreationForm: FC = () => {
 					name="confirm-password"
 					type="password"
 					variant="outlined"
+					onChange={checkPassword}
 				/>
 				<ReCAPTCHA
 					ref={recaptchaRef}

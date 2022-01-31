@@ -2,7 +2,6 @@
 
 #menubar {
 	margin: 0px auto;
-	margin-top: 1%;
 	min-height: 40px;
 	position: -webkit-sticky;
 	position: sticky;
@@ -38,17 +37,18 @@
 		.content {
 			border-radius: 20px;
 			border: 0;
-			background: linear-gradient(70deg, #eec3cd7c 30%, #ffcaad8c 70%);
+			background: linear-gradient(70deg, #eec3cd 30%, #ffcaad 70%);
 			box-shadow: 1px 2px 3px 0px rgba(255, 105, 135, .3);
+			z-index: 99;
 
 			.MuiList-root {
 				color: #a56949;
 				font-weight: 900;
+				padding: 8px 10px;
 
 				.MuiListItem-root {
 					width: auto;
 					font-weight: bold;
-					margin: 10%;
 
 					&:hover {
 						border-radius: 40px;
