@@ -73,7 +73,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 	);
 
 	const modalBody = (
-		<div>
+		<>
 			<h2 id="new-quote-modal-title">New quote</h2>
 			<form onSubmit={handleSubmit} className="new-quote-form">
 				<TextField
@@ -115,7 +115,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 					<p>{error}</p>
 				</div>
 			)}
-		</div>
+		</>
 	);
 
 	return (

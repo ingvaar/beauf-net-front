@@ -6,6 +6,8 @@ import { AuthService } from "services/auth.service";
 import { FooterComponent } from "../Footer/Footer";
 import { Menubar } from "../Menubar/Menubar"
 
+import "./scss/Layout.scss";
+
 export const Layout: FC = ({ children }) => {
 	const dispatch = useAppDispatch();
 
