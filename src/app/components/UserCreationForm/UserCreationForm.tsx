@@ -116,7 +116,7 @@ export const UserCreationForm: FC = () => {
 	);
 
 	const userCreationFormBody = (
-		<div>
+		<div className="form-body">
 			<h2 id="new-user-form-title">Please provide some information</h2>
 			<form onSubmit={handleSubmit} className="new-user-form">
 				<TextField
