@@ -1,6 +1,111 @@
 .user-creation {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	.form-body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.submitted-user-body {
+
+		.return-home {
+			width: fit-content;
+			margin: auto;
+
+			.MuiButtonBase-root {
+				margin-top: 6%;
+				margin-bottom: 6%;
+				background: linear-gradient(
+					255deg,
+					#97b8ff 0%,
+					#97ffd7 50%,
+					#afb49d 100%
+				);
+				box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+				border-radius: 30px;
+				border: 0;
+
+				.MuiFab-label {
+					font-weight: bolder;
+					color: rgb(71, 71, 71);
+					line-height: 100%;
+					padding: 10px;
+					text-shadow: h-shadow v-shadow blur-radius black;
+				}
+
+				&:active {
+					background: linear-gradient(
+						35deg,
+						#97a1ffd5 20%,
+						#97e7ffd5 50%,
+						#7af143d5 100%,
+					);
+
+					.MuiFab-label {
+						font-weight: bold;
+						color: white;
+					}
+				}
+			}
+		}
+	}
+
 	#new-user-form-title {
-		margin-bottom: 4%;
+		margin-bottom: 6%;
+		margin-top: 4%;
+		width: fit-content;
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+		background-color: #CA4246;
+		background-image: linear-gradient(
+			45deg,
+			#CA4246 5%,
+			#E16541 10%,
+			#E16541 20%,
+			#F18F43 30%,
+			#F18F43 40%,
+			#8B9862 50%,
+			#8B9862 60%,
+			#476098 70%,
+			#476098 80%,
+			#A7489B 95%,
+		);
+		background-size: 100%;
+		background-repeat: repeat;
+	  		background-clip: text;
+	  		-webkit-background-clip: text;
+	  		-webkit-text-fill-color: transparent;
+	}
+
+	#submitted-user-title {
+		margin-bottom: 6%;
+		margin-top: 4%;
+		font-family: "Roboto";
+		text-transform: uppercase;
+		font-weight: bolder;
+		background-color: #CA4246;
+		background-image: linear-gradient(
+			45deg,
+			#CA4246 5%,
+			#E16541 10%,
+			#E16541 20%,
+			#F18F43 30%,
+			#F18F43 40%,
+			#8B9862 50%,
+			#8B9862 60%,
+			#476098 70%,
+			#476098 80%,
+			#A7489B 95%,
+		);
+		background-size: 100%;
+		background-repeat: repeat;
+	  		background-clip: text;
+	  		-webkit-background-clip: text;
+	  		-webkit-text-fill-color: transparent;
 	}
 
 	.new-user-form {
@@ -9,13 +114,81 @@
 		flex-wrap: nowrap;
 		align-content: center;
 		align-items: center;
+		width: 40%;
 
 		.MuiTextField-root {
-			margin-bottom: 2%;
+			margin-bottom: 3%;
+			width: 100%;
+
+			.MuiFormHelperText-root {
+				text-align: center;
+			}
+
+			.MuiInputBase-root {
+				width: 100%;
+			}
+
+			.MuiFormLabel-root {
+				color: #8B9862;
+			}
+
+			.MuiFormLabel-root.Mui-error {
+				color: red;
+			}
+		}
+
+		.MuiFormLabel-root.Mui-focused {
+			color: #8B9862;
+			font-weight: bolder;
+		}
+
+		.MuiFormLabel-root.Mui-focused.Mui-error {
+			color: red;
+			font-weight: bolder;
+		}
+
+		.MuiOutlinedInput-root.Mui-focused fieldset {
+			border: 2px solid #8B9862;
+		}
+
+		.MuiOutlinedInput-root.Mui-focused.Mui-error fieldset {
+			border: 2px solid red;
 		}
 
 		.new-user-submit-button {
+			margin-top: 6%;
 			margin-bottom: 6%;
+			background: linear-gradient(
+				255deg,
+				#97b8ff 0%,
+				#97ffd7 50%,
+				#afb49d 100%
+			);
+			box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+			border-radius: 30px;
+			border: 0;
+
+			.MuiButton-label {
+				font-weight: bolder;
+				color: rgb(71, 71, 71);
+				line-height: 100%;
+				padding: 10px;
+				text-shadow: h-shadow v-shadow blur-radius black;
+			}
+
+			&:active {
+				background: linear-gradient(
+					35deg,
+					#97a1ffd5 20%,
+					#97e7ffd5 50%,
+					#7af143d5 100%,
+				);
+
+				.MuiFab-label {
+					font-weight: bold;
+					color: white;
+				}
+			}
 		}
 	}
 }
