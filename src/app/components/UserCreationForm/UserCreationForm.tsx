@@ -4,6 +4,7 @@ import { INewUserForm } from "interfaces/INewUserForm.interface";
 import { FC, useState, useRef, FormEvent, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useHistory } from "react-router-dom";
+import { UserService } from "services/user.service";
 import { CDefaultNewUserForm } from "./constants/DefaultUserCreationForm.constant";
 
 import "./scss/UserCreationForm.scss";
@@ -88,14 +89,32 @@ export const UserCreationForm: FC = () => {
 		setForm({ ...form, [event.target.name]: event.target.value });
 	};
 
+	const checkFormErrors = () => {
+		if (passwordCheckError.length > 0 ||
+			emailCheckError.length > 0 ||
+			usernameError.length > 0 ||
+			emailError.length > 0 ||
+			passwordError.length > 0) {
+				throw new Error("Please correct form errors");
+			}
+		if (form.username.length === 0 ||
+			form.password.length === 0 ||
+			form.email.length === 0 ||
+			passwordCheck.length === 0 ||
+			emailCheck.length === 0) {
+				throw new Error("Please fill all fields");
+			}
+	}
+
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		try {
+			checkFormErrors();
 			const captchaToken = await recaptchaRef?.current?.executeAsync();
 			recaptchaRef?.current?.reset();
 
 			form.captcha = captchaToken as string;
-			// TODO: call service
+			await UserService.Add(form);
 			setPosted(true);
 		} catch (error: any) {
 			setError(error.message);

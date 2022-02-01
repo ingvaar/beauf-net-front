@@ -64,5 +64,5 @@ export class QuoteService {
 				throw new Error("Cannot create quote");
 			}
 		}
-	};
+	}
 }
