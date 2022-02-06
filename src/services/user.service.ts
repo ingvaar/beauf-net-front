@@ -1,5 +1,6 @@
 import { INewUserForm } from "interfaces/INewUserForm.interface";
 import { IUser } from "interfaces/IUser.interface";
+import { IUserPublic } from "interfaces/IUserPublic.interface";
 import jwtDecode from "jwt-decode";
 import { ApiService } from "./api.service";
 
@@ -25,6 +26,17 @@ export class UserService {
 		try {
 			const res: IUser = await ApiService
 				.post("/users", newUser)
+				.then((res: any) => res);
+			return res
+		} catch (error: any) {
+				throw new Error(error.response.data.message);
+		}
+  }
+
+  public static async Confirm(token: string): Promise<IUserPublic> {
+		try {
+			const res: IUserPublic = await ApiService
+				.post(`/users/confirm?token=${token}`)
 				.then((res: any) => res);
 			return res
 		} catch (error: any) {
