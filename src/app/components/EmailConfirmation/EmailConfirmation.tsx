@@ -38,7 +38,7 @@ export const EmailConfirmation: FC = () => {
 	if (error.length > 0) {
 		return (
 			<div className="confirmation denied">
-				<h2 id="failed">Validation failed</h2>
+				<h2 id="failed">Email confirmation failed</h2>
 				<span id="error">{error}</span>
 			</div>
 		);
