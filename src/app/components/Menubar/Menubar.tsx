@@ -25,7 +25,7 @@ export const Menubar: FC = () => {
 	}
 
 	const userPanel = () => {
-		// TODO
+		history.push("/profile");
 	}
 
 	const home = () => {

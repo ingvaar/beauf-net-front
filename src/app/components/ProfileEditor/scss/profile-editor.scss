@@ -1,0 +1,87 @@
+.user-profile {
+	.profile-body {
+		display: flex;
+		flex-direction: column;
+
+		.error {
+			font-size: 0.9rem;
+			color: red;
+			font-family: "Roboto";
+			margin-bottom: 4%;
+		}
+
+		.profile-form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 5%;
+
+			.Mui-disabled {
+				color: black;
+			}
+
+			.MuiTextField-root {
+				margin-bottom: 3%;
+				width: 30%;
+				min-width: 220px;
+
+				.MuiFormLabel-root {
+					color: black;
+				}
+
+				.MuiFormLabel-root.Mui-error {
+					color: red;
+				}
+			}
+
+			.MuiOutlinedInput-root.Mui-focused fieldset {
+				border: 2px solid #8B9862;
+			}
+
+			.MuiOutlinedInput-root.Mui-focused.Mui-error fieldset {
+				border: 2px solid red;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.update-profile-button {
+				margin-top: 3%;
+				margin-bottom: 4%;
+				background: linear-gradient(
+					25deg,
+					#31aa6e 0%,
+					#97ffcb 50%,
+					#41c9ab 100%
+				);
+				box-shadow: 0 3px 5px 2px rgb(255 105 135 / 30%);
+				border-radius: 30px;
+				border: 0;
+
+				.MuiButton-label {
+					font-weight: bolder;
+					color: rgb(71, 71, 71);
+					line-height: 100%;
+					padding: 10px;
+					text-shadow: h-shadow v-shadow blur-radius black;
+					font-family: "Roboto";
+				}
+
+				&:active {
+					background: linear-gradient(
+						105deg,
+						#97a1ffd5 20%,
+						#97e7ffd5 50%,
+						#7af143d5 100%,
+					);
+
+					.MuiFab-label {
+						font-weight: bold;
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
