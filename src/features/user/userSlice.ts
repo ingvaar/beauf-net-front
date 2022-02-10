@@ -6,6 +6,7 @@ import { IUser } from "interfaces/IUser.interface";
 const initialState: IUser = {
 	id: "",
 	username: "",
+	email: "",
 	role: ""
 };
 

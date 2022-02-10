@@ -1,0 +1,46 @@
+#profile-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.row {
+		width: 80%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: baseline;
+		padding-top: 4%;
+
+		#button-edit {
+			position: fixed;
+			top: 79vh;
+			right: 12vw;
+			color: rgb(0, 0, 0);
+			width: 56px;
+			height: 56px;
+			padding: 0;
+			font-size: 0.875rem;
+			min-width: 0;
+			box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+			box-sizing: border-box;
+			min-height: 36px;
+			transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+			font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+			font-weight: 500;
+			line-height: 1.75;
+			border-radius: 50%;
+			letter-spacing: 0.02857em;
+			text-transform: uppercase;
+			background: linear-gradient(45deg, #ffd5df 30%, #ffe1d1 70%);
+		}
+
+		.user-profile {
+			width: 100%;
+
+			.profile-form {
+				width: 100%;
+				min-width: 200px;
+			}
+		}
+	}
+}
