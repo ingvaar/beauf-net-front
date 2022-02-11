@@ -114,7 +114,7 @@ export const UserCreationForm: FC = () => {
 			recaptchaRef?.current?.reset();
 
 			form.captcha = captchaToken as string;
-			await UserService.Add(form);
+			await UserService.add(form);
 			setPosted(true);
 		} catch (error: any) {
 			setError(error.message);

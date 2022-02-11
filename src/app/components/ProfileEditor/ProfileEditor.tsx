@@ -1,8 +1,10 @@
 import { TextField, Button } from "@material-ui/core";
-import { selectUser } from "features/user/userSlice";
-import { useAppSelector } from "hooks";
+import { selectUser, updateUser } from "features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "hooks";
 import { IUser } from "interfaces/IUser.interface";
+import { IUserPatch } from "interfaces/IUserPatch.interface";
 import { FC, useState, useEffect, FormEvent } from "react";
+import { UserService } from "services/user.service";
 
 import "./scss/profile-editor.scss";
 
@@ -12,6 +14,8 @@ interface IUserProfile extends IUser {
 
 interface Props {
 	edit: boolean,
+	setEditOff: () => void,
+	setUpdated: () => void,
 }
 
 export const ProfileEditor: FC<Props> = (props: Props) => {
@@ -22,6 +26,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 	const [form, setForm] = useState<IUserProfile>(
 		user
 	);
+	const dispatch = useAppDispatch();
 	// Password check
 	const [passwordCheckError, setPasswordCheckError] = useState<string>("");
 	const [passwordCheck, setPasswordCheck] = useState<string>("");
@@ -107,9 +112,11 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 
 	const checkFormErrors = () => {
 		if (
-			(passwordError.length > 0 &&
+			passwordError.length > 0 ||
+			(form.password.length > 0 &&
 			passwordCheckError.length > 0) ||
-			(emailError.length > 0 &&
+			emailError.length > 0 ||
+			(form.email !== user.email &&
 			emailCheckError.length > 0) ||
 			usernameError.length > 0
 		) {
@@ -129,19 +136,42 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 			}
 	}
 
+	function checkForm(): IUserPatch {
+		const finalUser: IUserPatch = Object.assign({}, form);
+
+		if (form.username === user.username) {
+			delete(finalUser.username);
+		}
+
+		if (form.email === user.email) {
+			delete(finalUser.email);
+		}
+
+		if (!form.password) {
+			delete(finalUser.password);
+		}
+
+		return finalUser;
+	}
+
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		try {
 			checkFormErrors();
-
+			const updatedUser: IUser = await UserService.update(user.id, checkForm());
+			dispatch(updateUser(updatedUser));
+			props.setEditOff();
+			props.setUpdated();
 		} catch (error: any) {
 			setError(error.message);
 			setForm(form);
 		}
+		setPasswordCheck("");
+		setEmailCheck("");
 	};
 
 	const userProfileBody = (
-		<div className="profile-body">
+		<div className="editor-body">
 			<form onSubmit={handleSubmit} className="profile-form">
 				<TextField
 					label="Username"
@@ -209,7 +239,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 	);
 
 	return (
-		<div className="user-profile">
+		<div className="profile-editor">
 			{userProfileBody}
 		</div>
 	);
