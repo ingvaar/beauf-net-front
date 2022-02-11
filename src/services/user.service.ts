@@ -1,5 +1,7 @@
 import { INewUserForm } from "interfaces/INewUserForm.interface";
 import { IUser } from "interfaces/IUser.interface";
+import { IUserPatch } from "interfaces/IUserPatch.interface";
+import { IUserPrivate } from "interfaces/IUserPrivate.interface";
 import { IUserPublic } from "interfaces/IUserPublic.interface";
 import jwtDecode from "jwt-decode";
 import { ApiService } from "./api.service";
@@ -22,7 +24,7 @@ export class UserService {
     }
   }
 
-  public static async Add(newUser: INewUserForm): Promise<IUser> {
+  public static async add(newUser: INewUserForm): Promise<IUser> {
 		try {
 			const res: IUser = await ApiService
 				.post("/users", newUser)
@@ -33,10 +35,32 @@ export class UserService {
 		}
   }
 
-  public static async Confirm(token: string): Promise<IUserPublic> {
+  public static async confirm(token: string): Promise<IUserPublic> {
 		try {
 			const res: IUserPublic = await ApiService
 				.post(`/users/confirm?token=${token}`)
+				.then((res: any) => res);
+			return res
+		} catch (error: any) {
+				throw new Error(error.response.data.message);
+		}
+  }
+
+  public static async update(userID: string, user: IUserPatch): Promise<IUserPrivate> {
+		try {
+			const res: IUserPrivate = await ApiService
+				.patch(`/users/${userID}`, user)
+				.then((res: any) => res);
+			return res
+		} catch (error: any) {
+				throw new Error(error.response.data.message);
+		}
+  }
+
+  public static async resendMail(): Promise<IUserPublic> {
+		try {
+			const res: IUserPrivate = await ApiService
+				.post(`/users/resend`, {})
 				.then((res: any) => res);
 			return res
 		} catch (error: any) {

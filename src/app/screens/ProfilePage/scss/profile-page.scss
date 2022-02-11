@@ -3,44 +3,79 @@
 	flex-direction: column;
 	align-items: center;
 
-	.row {
-		width: 80%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: baseline;
+	.info {
+		font-size: 1.3rem;
+		padding-top: 2%;
+		font-weight: bolder;
+		background-image: linear-gradient(45deg,
+			#017c26 0%,
+			#2eca3b 20%,
+			#80e744 40%,
+			#2eca3b 60%,
+			#017c26 80%,
+		);
+		text-transform: uppercase;
+		background-size: 100%;
+		background-repeat: repeat;
+	  	background-clip: text;
+	  	-webkit-background-clip: text;
+	  	-webkit-text-fill-color: transparent;
+	}
+
+	#mod-icon {
+		color: darkred;
+		font-size: 2.2rem;
+	}
+
+	#admin-icon {
+		color: goldenrod;
+		font-size: 2.2rem;
+	}
+
+	#button-edit {
+		position: fixed;
+		top: 79vh;
+		right: 12vw;
+		color: rgb(0, 0, 0);
+		width: 56px;
+		height: 56px;
+		padding: 0;
+		font-size: 0.875rem;
+		min-width: 0;
+		box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+		box-sizing: border-box;
+		min-height: 36px;
+		transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+		font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+		font-weight: 500;
+		line-height: 1.75;
+		border-radius: 50%;
+		letter-spacing: 0.02857em;
+		text-transform: uppercase;
+		background: linear-gradient(45deg, #ffd5df 30%, #ffe1d1 70%);
+	}
+
+	.information.error {
+		color: darkred;
+		font-size: 1.1rem;
+		font-weight: 600;
+		padding-top: 3%;
+
+		button {
+			color: rgb(216, 107, 5);
+			font-size: 1.1rem;
+			font-weight: 600;
+			padding: 0;
+		}
+	}
+
+	.profile {
+		width: 100%;
 		padding-top: 4%;
 
-		#button-edit {
-			position: fixed;
-			top: 79vh;
-			right: 12vw;
-			color: rgb(0, 0, 0);
-			width: 56px;
-			height: 56px;
-			padding: 0;
-			font-size: 0.875rem;
-			min-width: 0;
-			box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
-			box-sizing: border-box;
-			min-height: 36px;
-			transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-			font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-			font-weight: 500;
-			line-height: 1.75;
-			border-radius: 50%;
-			letter-spacing: 0.02857em;
-			text-transform: uppercase;
-			background: linear-gradient(45deg, #ffd5df 30%, #ffe1d1 70%);
-		}
-
-		.user-profile {
+		.profile-form {
 			width: 100%;
-
-			.profile-form {
-				width: 100%;
-				min-width: 200px;
-			}
+			min-width: 200px;
 		}
 	}
 }
