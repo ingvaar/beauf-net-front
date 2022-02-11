@@ -1,13 +1,14 @@
-import { AdminQuotesList } from "app/components/AdminQuotesList/AdminQuotesList";
-import { ButtonTrash } from "app/components/ButtonTrash/ButtonTrash";
-import { Pagination } from "app/components/Pagination/Pagination";
-import { PerPage } from "app/components/PerPage/PerPage";
-import { TrashModal } from "app/components/TrashModal/TrashModal";
-import { selectUser } from "features/user/userSlice";
-import { useAppSelector } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
 import { FC, useState } from "react";
 import { useHistory } from "react-router-dom";
+
+import { AdminQuotesList } from "src/app/components/AdminQuotesList/AdminQuotesList";
+import { ButtonTrash } from "src/app/components/ButtonTrash/ButtonTrash";
+import { Pagination } from "src/app/components/Pagination/Pagination";
+import { PerPage } from "src/app/components/PerPage/PerPage";
+import { TrashModal } from "src/app/components/TrashModal/TrashModal";
+import { selectUser } from "src/features/user/userSlice";
+import { useAppSelector } from "src/hooks";
+import { IUser } from "src/interfaces/IUser.interface";
 
 import "./scss/Admin.scss";
 

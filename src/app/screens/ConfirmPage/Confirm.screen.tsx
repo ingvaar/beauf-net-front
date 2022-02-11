@@ -1,6 +1,6 @@
-
-import { EmailConfirmation } from "app/components/EmailConfirmation/EmailConfirmation";
 import { FC } from "react";
+
+import { EmailConfirmation } from "src/app/components/EmailConfirmation/EmailConfirmation";
 
 export const ConfirmPage: FC = () => {
 	return (

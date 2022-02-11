@@ -1,9 +1,10 @@
 import { Button } from "@material-ui/core";
-import { deleteUser, selectUser } from "features/user/userSlice";
-import { useAppDispatch, useAppSelector } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
 import { FC } from "react";
 import { useHistory } from "react-router";
+
+import { deleteUser, selectUser } from "src/features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "src/hooks";
+import { IUser } from "src/interfaces/IUser.interface";
 import { ButtonDropdown } from "../ButtonDropdown/ButtonDropdown";
 import { LoginPopup } from "../LoginPopup/LoginPopup";
 

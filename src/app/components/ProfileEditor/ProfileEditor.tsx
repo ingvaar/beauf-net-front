@@ -1,10 +1,11 @@
 import { TextField, Button } from "@material-ui/core";
-import { selectUser, updateUser } from "features/user/userSlice";
-import { useAppDispatch, useAppSelector } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
-import { IUserPatch } from "interfaces/IUserPatch.interface";
 import { FC, useState, useEffect, FormEvent } from "react";
-import { UserService } from "services/user.service";
+
+import { useAppDispatch, useAppSelector } from "src/hooks";
+import { selectUser, updateUser } from "src/features/user/userSlice";
+import { IUser } from "src/interfaces/IUser.interface";
+import { IUserPatch } from "src/interfaces/IUserPatch.interface";
+import { UserService } from "src/services/user.service";
 
 import "./scss/profile-editor.scss";
 

@@ -1,6 +1,6 @@
-import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
-import { IQuotePublic } from "interfaces/IQuotePublic.interface";
-import { IQuotesPublic } from "interfaces/IQuotesPublic.interface";
+import { INewQuoteForm } from "src/interfaces/INewQuoteForm.interface";
+import { IQuotePublic } from "src/interfaces/IQuotePublic.interface";
+import { IQuotesPublic } from "src/interfaces/IQuotesPublic.interface";
 import { get } from "lodash";
 import { ApiService } from "./api.service";
 import { EQuotesErrors } from "./enums/EQuotesErrors.enum";

@@ -1,10 +1,11 @@
 import { Fab, TextField, Button } from "@material-ui/core";
 import { KeyboardReturn } from "@material-ui/icons";
-import { INewUserForm } from "interfaces/INewUserForm.interface";
-import { FC, useState, useRef, FormEvent, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useHistory } from "react-router-dom";
-import { UserService } from "services/user.service";
+import { FC, useState, useRef, FormEvent, useEffect } from "react";
+
+import { INewUserForm } from "src/interfaces/INewUserForm.interface";
+import { UserService } from "src/services/user.service";
 import { CDefaultNewUserForm } from "./constants/DefaultUserCreationForm.constant";
 
 import "./scss/UserCreationForm.scss";

@@ -1,10 +1,11 @@
 import { Button, Dialog, Fab, TextField } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
-import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
-import { IQuotePublic } from "interfaces/IQuotePublic.interface";
 import { FC, FormEvent, useRef, useState } from "react";
+import { Close } from "@material-ui/icons";
 import ReCAPTCHA from "react-google-recaptcha";
-import { QuoteService } from "services/quotes.service";
+
+import { INewQuoteForm } from "src/interfaces/INewQuoteForm.interface";
+import { IQuotePublic } from "src/interfaces/IQuotePublic.interface";
+import { QuoteService } from "src/services/quotes.service";
 import { CDefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
 import { CDefaultQuotePublic } from "./constants/DefaultQuotePublic";
 

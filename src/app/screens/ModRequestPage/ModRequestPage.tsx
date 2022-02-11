@@ -1,5 +1,6 @@
-import { UserCreationForm } from "app/components/UserCreationForm/UserCreationForm";
 import { FC } from "react";
+
+import { UserCreationForm } from "src/app/components/UserCreationForm/UserCreationForm";
 
 export const ModRequestPage: FC = () => {
 	return (
