@@ -1,12 +1,13 @@
 import { CircularProgress, Fab } from "@material-ui/core";
 import { Block } from "@material-ui/icons";
-import { selectUser } from "features/user/userSlice";
-import { useAppSelector } from "hooks";
-import { IQuotePublic } from "interfaces/IQuotePublic.interface";
-import { IQuotesPublic } from "interfaces/IQuotesPublic.interface";
-import { IUser } from "interfaces/IUser.interface";
 import { FC, useEffect, useMemo, useState } from "react";
-import { QuoteService } from "services/quotes.service";
+
+import { selectUser } from "src/features/user/userSlice";
+import { useAppSelector } from "src/hooks";
+import { IQuotePublic } from "src/interfaces/IQuotePublic.interface";
+import { IQuotesPublic } from "src/interfaces/IQuotesPublic.interface";
+import { IUser } from "src/interfaces/IUser.interface";
+import { QuoteService } from "src/services/quotes.service";
 
 import "./scss/QuotesList.scss";
 

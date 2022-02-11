@@ -1,4 +1,4 @@
-import { INewUserForm } from "interfaces/INewUserForm.interface";
+import { INewUserForm } from "src/interfaces/INewUserForm.interface";
 
 export const CDefaultNewUserForm: INewUserForm = {
 	username: '',

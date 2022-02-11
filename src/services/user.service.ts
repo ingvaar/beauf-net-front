@@ -1,8 +1,8 @@
-import { INewUserForm } from "interfaces/INewUserForm.interface";
-import { IUser } from "interfaces/IUser.interface";
-import { IUserPatch } from "interfaces/IUserPatch.interface";
-import { IUserPrivate } from "interfaces/IUserPrivate.interface";
-import { IUserPublic } from "interfaces/IUserPublic.interface";
+import { INewUserForm } from "src/interfaces/INewUserForm.interface";
+import { IUser } from "src/interfaces/IUser.interface";
+import { IUserPatch } from "src/interfaces/IUserPatch.interface";
+import { IUserPrivate } from "src/interfaces/IUserPrivate.interface";
+import { IUserPublic } from "src/interfaces/IUserPublic.interface";
 import jwtDecode from "jwt-decode";
 import { ApiService } from "./api.service";
 

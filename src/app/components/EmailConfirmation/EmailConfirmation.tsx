@@ -1,7 +1,7 @@
 import { CircularProgress } from "@material-ui/core";
 import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { UserService } from "services/user.service";
+import { UserService } from "src/services/user.service";
 
 import './scss/email-confirmation.scss';
 

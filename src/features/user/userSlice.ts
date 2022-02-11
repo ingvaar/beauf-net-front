@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-import { IUser } from "interfaces/IUser.interface";
+import { IUser } from "src/interfaces/IUser.interface";
 
 const initialState: IUser = {
 	id: "",

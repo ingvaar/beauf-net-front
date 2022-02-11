@@ -1,8 +1,8 @@
-import { updateUser } from "features/user/userSlice";
-import { useAppDispatch } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
 import { FC, useEffect } from "react"
-import { AuthService } from "services/auth.service";
+import { updateUser } from "src/features/user/userSlice";
+import { useAppDispatch } from "src/hooks";
+import { IUser } from "src/interfaces/IUser.interface";
+import { AuthService } from "src/services/auth.service";
 import { FooterComponent } from "../Footer/Footer";
 import { Menubar } from "../Menubar/Menubar"
 

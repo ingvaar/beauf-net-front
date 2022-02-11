@@ -1,4 +1,4 @@
-import { IQuotePublic } from "interfaces/IQuotePublic.interface";
+import { IQuotePublic } from "src/interfaces/IQuotePublic.interface";
 
 export const CDefaultQuotePublic: IQuotePublic = {
 	text: '',

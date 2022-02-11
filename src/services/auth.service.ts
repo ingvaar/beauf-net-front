@@ -1,8 +1,8 @@
 import { get } from "lodash";
-import { ILoginForm } from "interfaces/ILoginForm.interface";
+import { ILoginForm } from "src/interfaces/ILoginForm.interface";
 import { ILoginResponse } from "./interfaces/ILoginResponse.interface";
 import { EAuthErrors } from "./enums/EAuthErros.enum";
-import { IUser } from "interfaces/IUser.interface";
+import { IUser } from "src/interfaces/IUser.interface";
 import { ApiService } from "./api.service";
 import { UserService } from "./user.service";
 

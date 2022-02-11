@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
+import { IQuotePrivate } from "src/interfaces/IQuotePrivate.interface";
 
 type QuotesTrash = Array<IQuotePrivate>;
 

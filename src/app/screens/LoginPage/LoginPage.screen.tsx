@@ -1,12 +1,13 @@
 import { FC, useState } from "react";
-import LoginForm from "app/components/LoginForm/LoginForm.component";
-import { ILoginForm } from "interfaces/ILoginForm.interface";
-import { useHistory } from "react-router-dom";
-import { AuthService } from "services/auth.service";
-import { useAppDispatch } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
-import { updateUser } from "features/user/userSlice";
 import { CircularProgress } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+
+import LoginForm from "src/app/components/LoginForm/LoginForm.component";
+import { ILoginForm } from "src/interfaces/ILoginForm.interface";
+import { AuthService } from "src/services/auth.service";
+import { useAppDispatch } from "src/hooks";
+import { IUser } from "src/interfaces/IUser.interface";
+import { updateUser } from "src/features/user/userSlice";
 
 import "./scss/LoginPage.scss";
 

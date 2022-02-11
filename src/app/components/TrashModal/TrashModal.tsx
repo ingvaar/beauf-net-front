@@ -1,10 +1,11 @@
 import { Dialog, Fab } from "@material-ui/core";
 import { Close, DeleteForever, SettingsBackupRestore } from "@material-ui/icons";
-import { selectTrash, removeQuoteFromTrash } from "features/trash/trashSlice";
-import { useAppSelector, useAppDispatch } from "hooks";
-import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
 import { FC } from "react";
-import { QuoteService } from "services/quotes.service";
+
+import { selectTrash, removeQuoteFromTrash } from "src/features/trash/trashSlice";
+import { useAppSelector, useAppDispatch } from "src/hooks";
+import { IQuotePrivate } from "src/interfaces/IQuotePrivate.interface";
+import { QuoteService } from "src/services/quotes.service";
 
 import "./scss/TrashModal.scss";
 

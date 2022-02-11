@@ -1,9 +1,10 @@
-import { ButtonAddQuote } from "app/components/ButtonAddQuote/ButtonAddQuote";
-import { NewQuoteModal } from "app/components/NewQuoteModal/NewQuoteModal";
-import { Pagination } from "app/components/Pagination/Pagination";
-import { PerPage } from "app/components/PerPage/PerPage";
-import { QuotesList } from "app/components/QuotesList/QuotesList"
 import { FC, useState } from "react";
+
+import { ButtonAddQuote } from "src/app/components/ButtonAddQuote/ButtonAddQuote";
+import { NewQuoteModal } from "src/app/components/NewQuoteModal/NewQuoteModal";
+import { Pagination } from "src/app/components/Pagination/Pagination";
+import { PerPage } from "src/app/components/PerPage/PerPage";
+import { QuotesList } from "src/app/components/QuotesList/QuotesList"
 
 import "./scss/QuotesList.scss";
 
