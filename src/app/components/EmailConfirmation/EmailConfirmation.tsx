@@ -18,7 +18,7 @@ export const EmailConfirmation: FC = () => {
 			setLoading(false);
 			return;
 		}
-		UserService.Confirm(token).then(() => {
+		UserService.confirm(token).then(() => {
 			setError("");
 			setLoading(false);
 		}).catch((error: any) => {

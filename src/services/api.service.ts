@@ -51,7 +51,7 @@ export class ApiService {
 	public static async patch(endpoint: string, query: any) {
 		return new Promise((resolve, reject) => {
 			axios
-				.put(
+				.patch(
 					`${BASE_URI}${endpoint}`,
 					query,
 					{

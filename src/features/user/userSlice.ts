@@ -7,7 +7,8 @@ const initialState: IUser = {
 	id: "",
 	username: "",
 	email: "",
-	role: ""
+	role: "",
+	confirmed: false,
 };
 
 export const userSlice = createSlice({
