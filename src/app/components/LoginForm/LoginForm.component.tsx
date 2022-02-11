@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 
-import { ILoginForm } from "interfaces/ILoginForm.interface";
+import { ILoginForm } from "src/interfaces/ILoginForm.interface";
 import { CDefaultLoginForm } from "./constants/DefaultLoginForm.constant";
-import { AuthService } from "services/auth.service";
+import { AuthService } from "src/services/auth.service";
 
 import "./scss/LoginForm.scss";
 

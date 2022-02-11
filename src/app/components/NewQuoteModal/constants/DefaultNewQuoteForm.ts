@@ -1,4 +1,4 @@
-import { INewQuoteForm } from "interfaces/INewQuoteForm.interface";
+import { INewQuoteForm } from "src/interfaces/INewQuoteForm.interface";
 
 export const CDefaultNewQuoteForm: INewQuoteForm = {
 	text: '',

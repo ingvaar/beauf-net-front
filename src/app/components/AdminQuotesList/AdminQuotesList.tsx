@@ -1,11 +1,11 @@
 import { CircularProgress, Fab } from "@material-ui/core";
 import { Check, Close } from "@material-ui/icons";
-import { addQuoteToTrash, selectTrash } from "features/trash/trashSlice";
-import { useAppSelector, useAppDispatch } from "hooks";
-import { IQuotePrivate } from "interfaces/IQuotePrivate.interface";
-import { IQuotesPrivatePage } from "interfaces/IQuotesPrivatePage.interface";
+import { addQuoteToTrash, selectTrash } from "src/features/trash/trashSlice";
+import { useAppSelector, useAppDispatch } from "src/hooks";
+import { IQuotePrivate } from "src/interfaces/IQuotePrivate.interface";
+import { IQuotesPrivatePage } from "src/interfaces/IQuotesPrivatePage.interface";
 import { FC, useEffect, useState, useMemo } from "react";
-import { QuoteService } from "services/quotes.service";
+import { QuoteService } from "src/services/quotes.service";
 
 import "./scss/AdminQuotesList.scss";
 

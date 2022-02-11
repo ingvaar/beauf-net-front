@@ -1,13 +1,14 @@
 import { Button } from "@material-ui/core";
 import { Create, Gavel } from "@material-ui/icons";
-import { Information } from "app/components/Information/Information";
-import { ProfileEditor } from "app/components/ProfileEditor/ProfileEditor";
-import { selectUser } from "features/user/userSlice";
-import { useAppSelector } from "hooks";
-import { IUser } from "interfaces/IUser.interface";
 import { FC, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { UserService } from "services/user.service";
+
+import { Information } from "src/app/components/Information/Information";
+import { ProfileEditor } from "src/app/components/ProfileEditor/ProfileEditor";
+import { selectUser } from "src/features/user/userSlice";
+import { useAppSelector } from "src/hooks";
+import { IUser } from "src/interfaces/IUser.interface";
+import { UserService } from "src/services/user.service";
 
 import "./scss/profile-page.scss";
 
