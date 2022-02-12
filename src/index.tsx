@@ -1,13 +1,17 @@
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
+
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './features/store';
-import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+      <SnackbarProvider maxSnack={3}>
+        <App />
+      </SnackbarProvider>
   </Provider>,
   document.getElementById('root')
 );
