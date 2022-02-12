@@ -1,5 +1,6 @@
 import { FormControl, NativeSelect } from "@material-ui/core";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import "./scss/PerPage.scss";
 
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 export const PerPage: FC<IProps> = (props: IProps) => {
+	const { t } = useTranslation();
 
 	const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
 		if (event.target.name === "perPage") {
@@ -18,7 +20,7 @@ export const PerPage: FC<IProps> = (props: IProps) => {
 
 	return (
 		<div className="per-page">
-			<span className="helper">Quotes per page :</span>
+			<span className="helper">{t('quotesPerPage')} :</span>
 			<FormControl className="form-control">
 				<NativeSelect
 					className="select"

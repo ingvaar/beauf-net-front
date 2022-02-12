@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import { FC } from "react";
-import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 
 import { deleteUser, selectUser } from "src/features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "src/hooks";
@@ -13,25 +14,26 @@ import "./scss/Menubar.scss";
 export const Menubar: FC = () => {
 	const user: IUser = useAppSelector(selectUser);
 	const dispatch = useAppDispatch();
-	const history = useHistory();
+	const history = useNavigate();
+	const { t } = useTranslation();
 
 	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
 		dispatch(deleteUser());
-		history.push("/");
+		history("");
 	}
 
 	const adminPanel = () => {
-		history.push("/admin");
+		history("admin");
 	}
 
 	const userPanel = () => {
-		history.push("/profile");
+		history("profile");
 	}
 
 	const home = () => {
 		return (
-			<Button className="home" id="home" onClick={() => history.push("/")}>Beauf.net</Button>
+			<Button className="home" id="home" onClick={() => history("/")}>Beauf.net</Button>
 		)
 	}
 
@@ -52,7 +54,7 @@ export const Menubar: FC = () => {
 		const array = [
 			{
 				key: "1",
-				name: "Profile",
+				name: t('profile'),
 				callback: userPanel,
 			},
 		]
@@ -60,14 +62,14 @@ export const Menubar: FC = () => {
 		if (user.role.length > 0 && user.role === "admin") {
 			array.push({
 				key: "2",
-				name: "Admin Panel",
+				name: t('adminPanel'),
 				callback: adminPanel,
 			});
 		}
 
 		array.push({
 			key: "3",
-			name: "Logout",
+			name: t('logout'),
 			callback: handleSignOut,
 		})
 

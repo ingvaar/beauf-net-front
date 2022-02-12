@@ -8,6 +8,7 @@ import { IUserPatch } from "src/interfaces/IUserPatch.interface";
 import { UserService } from "src/services/user.service";
 
 import "./scss/profile-editor.scss";
+import { useTranslation } from "react-i18next";
 
 interface IUserProfile extends IUser {
 	password: string,
@@ -28,6 +29,8 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 		user
 	);
 	const dispatch = useAppDispatch();
+	const { t } = useTranslation();
+
 	// Password check
 	const [passwordCheckError, setPasswordCheckError] = useState<string>("");
 	const [passwordCheck, setPasswordCheck] = useState<string>("");
@@ -43,65 +46,65 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 	// Password check
 	useEffect(() => {
 		if (passwordCheck.length > 0 && passwordCheck !== form.password) {
-			setPasswordCheckError("Password don't match");
+			setPasswordCheckError(t('passwordDontMatch'));
 		} else if(passwordCheck.length === 0) {
-			setPasswordCheckError("Should not be empty");
+			setPasswordCheckError(t('shouldNotBeEmpty'));
 		} else {
 			setPasswordCheckError("")
 		}
-	}, [passwordCheck, passwordCheckError, form.password]);
+	}, [passwordCheck, passwordCheckError, form.password, t]);
 
 	// Email check
 	useEffect(() => {
 		if (emailCheck.length > 0 && emailCheck !== form.email) {
-			setEmailCheckError("Email don't match");
+			setEmailCheckError(t('emailDontMatch'));
 		} else if(emailCheck.length === 0) {
-			setEmailCheckError("Should not be empty");
+			setEmailCheckError(t('shouldNotBeEmpty'));
 		} else {
 			setEmailCheckError("");
 		}
-	}, [emailCheck, emailCheckError, form.email]);
+	}, [emailCheck, emailCheckError, form.email, t]);
 
 	// Username validation
 	useEffect(() => {
 		const usernameRegexp = new RegExp('^\\w+$', 'i')
 
 		if (form.username.length > 0 && (form.username.length < 4 || form.username.length > 24)) {
-			setUsernameError("Username should be between 4 and 24 long");
+			setUsernameError(t('usernameLength'));
 		} else if (form.username.length > 0 && !usernameRegexp.test(form.username)) {
-			setUsernameError("Username should only contains letters and numbers");
+			setUsernameError(t('usernameFormat'));
 		} else if (form.username.length === 0) {
-			setUsernameError("Should not be empty");
+			setUsernameError(t('shouldNotBeEmpty'));
 		} else {
 			setUsernameError("");
 		}
-	}, [form.username, usernameError]);
+	}, [form.username, t, usernameError]);
 
 	// Email validation
 	useEffect(() => {
 		const emailRegexp = new RegExp('^\\S+[@]\\S+[.][a-z]+$', 'i')
 
 		if (form.email.length > 0 && !emailRegexp.test(form.email)) {
-			setEmailError("Invalid email");
+			setEmailError(t('invalidEmail'));
 		} else if (form.email.length === 0) {
-			setEmailError("Should not be empty");
+			setEmailError(t('shouldNotBeEmpty'));
 		} else {
 			setEmailError("");
 		}
-	}, [form.email, emailError]);
+	}, [form.email, emailError, t]);
 
 	// Password validation
 	useEffect(() => {
 		const passwordRegexp = new RegExp('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$&\\*_\'\\-"èé`àç()[\\]?]).{0,}$', '')
 
 		if (form.password.length > 0 && (form.password.length < 8 || form.password.length > 32)) {
-			setPasswordError("Password should be between 8 and 32 long");
+			setPasswordError(t('passwordLength'));
 		} else if (form.password.length > 0 && !passwordRegexp.test(form.password)) {
-			setPasswordError("Password should contains atleast one special character, one uppercase and one number");
+			setPasswordError(t('passwordFormat'));
 		} else {
 			setPasswordError("");
 		}
-	}, [form.password, passwordError]);
+	}, [form.password, passwordError, t]);
 
 	function handleChange(event: any) {
 		setError("");
@@ -121,7 +124,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 			emailCheckError.length > 0) ||
 			usernameError.length > 0
 		) {
-				throw new Error("Please correct form errors");
+				throw new Error(t('correctFormErrors'));
 			}
 		if (form.username.length === 0 ||
 			(
@@ -133,7 +136,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 				form.password.length !== 0 &&
 				passwordCheck.length === 0
 			)) {
-				throw new Error("Please fill all required fields");
+				throw new Error(t('fillAllFields'));
 			}
 	}
 
@@ -175,7 +178,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 		<div className="editor-body">
 			<form onSubmit={handleSubmit} className="profile-form">
 				<TextField
-					label="Username"
+					label={t('username')}
 					name="username"
 					onChange={handleChange}
 					value={form.username}
@@ -185,7 +188,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 					disabled={!props.edit}
 				/>
 				<TextField
-					label="Email"
+					label={t('email')}
 					name="email"
 					onChange={handleChange}
 					value={form.email}
@@ -195,7 +198,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 					disabled={!props.edit}
 				/>
 				<TextField
-					label="Confirm email"
+					label={t('confirmEmail')}
 					name="confirm-email"
 					className={form.email === user.email || form.email.length === 0 || !props.edit ? "hidden" : ""}
 					variant="outlined"
@@ -205,7 +208,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 					helperText={emailCheckError}
 				/>
 				<TextField
-					label="Password"
+					label={t('password')}
 					name="new-password"
 					type="password"
 					onChange={handleChange}
@@ -217,7 +220,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 					className={props.edit ? "" : "hidden"}
 				/>
 				<TextField
-					label="Confirm password"
+					label={t('confirmPassword')}
 					name="confirm-password"
 					className={form.password.length === 0 || !props.edit ? "hidden" : ""}
 					type="password"
@@ -228,7 +231,7 @@ export const ProfileEditor: FC<Props> = (props: Props) => {
 					helperText={passwordCheckError}
 				/>
 				<div className="update-profile-button">
-					<Button className={props.edit ? "" : "hidden"} type="submit">Update Profile</Button>
+					<Button className={props.edit ? "" : "hidden"} type="submit">{t('updateProfile')}</Button>
 				</div>
 			</form>
 			{(error.length > 0 && props.edit) && (

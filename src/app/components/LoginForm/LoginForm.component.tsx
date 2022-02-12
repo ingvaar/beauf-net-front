@@ -6,6 +6,7 @@ import { CDefaultLoginForm } from "./constants/DefaultLoginForm.constant";
 import { AuthService } from "src/services/auth.service";
 
 import "./scss/LoginForm.scss";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
 	method: string;
@@ -22,6 +23,7 @@ const LoginForm: FC<IProps> = ({
 	const [form, setForm] = useState<ILoginForm>(
 		CDefaultLoginForm
 	);
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		setError(parentError);
@@ -48,7 +50,7 @@ const LoginForm: FC<IProps> = ({
 			<form onSubmit={handleSubmit}>
 				<TextField
 					id="standard"
-					label="Identifier"
+					label={t('identifier')}
 					name="identifier"
 					type="email"
 					onChange={handleChange}
@@ -56,7 +58,7 @@ const LoginForm: FC<IProps> = ({
 				/>
 				<TextField
 					id="standard-password-input"
-					label="Password"
+					label={t('password')}
 					type="password"
 					name="password"
 					autoComplete="current-password"
@@ -64,7 +66,7 @@ const LoginForm: FC<IProps> = ({
 					value={form.password}
 				/>
 				<div className="submit-button">
-					<Button type="submit" onClick={handleSubmit}>Sign in</Button>
+					<Button type="submit" onClick={handleSubmit}>{t('signIn')}</Button>
 				</div>
 			</form>
 			{error.length > 0 && (
