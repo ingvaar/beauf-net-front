@@ -1,4 +1,9 @@
 build
-node_module
+node_modules
 *.log
 .git
+.github
+.env
+.env.example
+.gitignore
+docker-compose.yml
