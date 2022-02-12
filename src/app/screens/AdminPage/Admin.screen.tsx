@@ -21,14 +21,13 @@ export const AdminPage: FC = () => {
 	const [trashModalOpen, setTrashModalOpen] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(true);
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		if (!(user && user.role.length > 0 && (user.role === 'admin' || user.role === 'mod'))) {
-			history("");
+			history("/");
 		} else {
 			setLoading(false);
 		}
-	});
+	}, [user, history]);
 
 	const setTrashModalClose = () => {
 		setTrashModalOpen(false);
