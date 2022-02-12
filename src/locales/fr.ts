@@ -27,7 +27,7 @@ const fr = {
 		thanksForSubmitting: 'Merci d\'avoir postulé',
 		close: 'Fermer',
 		quoteSubmitted: 'Citation soumise',
-		profileUpdated: 'Profil mit à jour',
+		profileUpdated: 'Profil mis à jour',
 		emailNotConfirmed: 'Votre email n\'est pas confirmé',
 		here: 'ici',
 		checkMailOrClick: 'Verifiez votre boîte mail ou cliquez',

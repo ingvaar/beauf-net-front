@@ -7,6 +7,7 @@ import { deleteUser, selectUser } from "src/features/user/userSlice";
 import { useAppDispatch, useAppSelector } from "src/hooks";
 import { IUser } from "src/interfaces/IUser.interface";
 import { ButtonDropdown } from "../ButtonDropdown/ButtonDropdown";
+import { LangSelector } from "../LangSelector/LangSelector";
 import { LoginPopup } from "../LoginPopup/LoginPopup";
 
 import "./scss/Menubar.scss";
@@ -80,7 +81,10 @@ export const Menubar: FC = () => {
 
 	return (
 		<div id='menubar'>
-			{home()}
+			<div className="logo-lang">
+				{home()}
+				<LangSelector />
+			</div>
 			{login()}
 		</div>
 	);

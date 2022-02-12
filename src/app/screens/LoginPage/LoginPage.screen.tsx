@@ -18,14 +18,13 @@ const LoginPage: FC = () => {
 	const [pageLoading, setPageLoading] = useState<boolean>(true);
 	const dispatch = useAppDispatch();
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		if (window.localStorage.getItem("token")) {
 			history('');
 		} else {
 			setPageLoading(false);
 		}
-	});
+	}, [history]);
 
 	const handleSubmit = async (
 		registerForm: ILoginForm
