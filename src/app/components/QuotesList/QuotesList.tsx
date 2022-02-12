@@ -1,6 +1,7 @@
 import { CircularProgress, Fab } from "@material-ui/core";
 import { Block } from "@material-ui/icons";
 import { FC, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { selectUser } from "src/features/user/userSlice";
 import { useAppSelector } from "src/hooks";
@@ -22,6 +23,7 @@ export const QuotesList: FC<IProps> = (props: IProps) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 	const [quotes, setQuotes] = useState<IQuotesPublic>();
+	const { t } = useTranslation();
 
 	const quotesDisplay = useMemo<Array<IQuotePublic>>(() => {
 		if (quotes === undefined) {
@@ -76,7 +78,7 @@ export const QuotesList: FC<IProps> = (props: IProps) => {
 							{quote.source ? (
 								quote.source
 							) : (
-								"Unknown"
+								t('unknown')
 							)}
 						</span>
 					</div>

@@ -1,8 +1,9 @@
 import { Fab, TextField, Button } from "@material-ui/core";
 import { KeyboardReturn } from "@material-ui/icons";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FC, useState, useRef, FormEvent, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import { INewUserForm } from "src/interfaces/INewUserForm.interface";
 import { UserService } from "src/services/user.service";
@@ -11,12 +12,14 @@ import { CDefaultNewUserForm } from "./constants/DefaultUserCreationForm.constan
 import "./scss/UserCreationForm.scss";
 
 export const UserCreationForm: FC = () => {
-	const history = useHistory();
+	const history = useNavigate();
 	const [error, setError] = useState<string>("");
 	const [form, setForm] = useState<INewUserForm>(
 		CDefaultNewUserForm
 	);
 	const [posted, setPosted] = useState<boolean>(false);
+	const { t } = useTranslation();
+
 	// Password check
 	const [passwordCheckError, setPasswordCheckError] = useState<string>("");
 	const [passwordCheck, setPasswordCheck] = useState<string>("");
@@ -33,57 +36,57 @@ export const UserCreationForm: FC = () => {
 	// Password check
 	useEffect(() => {
 		if (passwordCheck.length > 0 && passwordCheck !== form.password) {
-			setPasswordCheckError("Password don't match");
+			setPasswordCheckError(t('passwordDontMatch'));
 		} else {
 			setPasswordCheckError("")
 		}
-	}, [passwordCheck, passwordCheckError, form.password]);
+	}, [passwordCheck, passwordCheckError, form.password, t]);
 
 	// Password check error
 	useEffect(() => {
 		if (emailCheck.length > 0 && emailCheck !== form.email) {
-			setEmailCheckError("Email don't match");
+			setEmailCheckError(t('emailDontMatch'));
 		} else {
 			setEmailCheckError("");
 		}
-	}, [emailCheck, emailCheckError, form.email]);
+	}, [emailCheck, emailCheckError, form.email, t]);
 
 	// Username validation
 	useEffect(() => {
 		const usernameRegexp = new RegExp('^\\w+$', 'i')
 
 		if (form.username.length > 0 && (form.username.length < 4 || form.username.length > 24)) {
-			setUsernameError("Username should be between 4 and 24 long");
+			setUsernameError(t('usernameLength'));
 		} else if (form.username.length > 0 && !usernameRegexp.test(form.username)) {
-			setUsernameError("Username should only contains letters and numbers");
+			setUsernameError(t('usernameFormat'));
 		} else {
 			setUsernameError("");
 		}
-	}, [form.username, usernameError]);
+	}, [form.username, t, usernameError]);
 
 	// Email validation
 	useEffect(() => {
 		const emailRegexp = new RegExp('^\\S+[@]\\S+[.][a-z]+$', 'i')
 
 		if (form.email.length > 0 && !emailRegexp.test(form.email)) {
-			setEmailError("Invalid email");
+			setEmailError(t('invalidEmail'));
 		} else {
 			setEmailError("");
 		}
-	}, [form.email, emailError]);
+	}, [form.email, emailError, t]);
 
 	// Password validation
 	useEffect(() => {
 		const passwordRegexp = new RegExp('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$&\\*_\'\\-"èé`àç()[\\]?]).{0,}$', '')
 
 		if (form.password.length > 0 && (form.password.length < 8 || form.password.length > 32)) {
-			setPasswordError("Password should be between 8 and 32 long");
+			setPasswordError(t('passwordLength'));
 		} else if (form.password.length > 0 && !passwordRegexp.test(form.password)) {
-			setPasswordError("Password should contains atleast one special character, one uppercase and one number");
+			setPasswordError(t('passwordFormat'));
 		} else {
 			setPasswordError("");
 		}
-	}, [form.password, passwordError]);
+	}, [form.password, passwordError, t]);
 
 	function handleChange(event: any) {
 		setError("");
@@ -96,15 +99,15 @@ export const UserCreationForm: FC = () => {
 			usernameError.length > 0 ||
 			emailError.length > 0 ||
 			passwordError.length > 0) {
-				throw new Error("Please correct form errors");
-			}
+			throw new Error(t('correctFormErrors'));
+		}
 		if (form.username.length === 0 ||
 			form.password.length === 0 ||
 			form.email.length === 0 ||
 			passwordCheck.length === 0 ||
 			emailCheck.length === 0) {
-				throw new Error("Please fill all fields");
-			}
+			throw new Error(t('fillAllFields'));
+		}
 	}
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -124,23 +127,23 @@ export const UserCreationForm: FC = () => {
 	};
 
 	const submittedUserBody = (
-			<div className="submitted-user-body">
-				<h2 id="submitted-user-title">Thanks for submitting !</h2>
-				<div className="return-home">
-					<Fab aria-label="home" variant="extended" onClick={() => {history.push("/")}}>
-						<KeyboardReturn />
-						Home
-					</Fab>
-				</div>
+		<div className="submitted-user-body">
+			<h2 id="submitted-user-title">{t('thanksForSubmitting')} !</h2>
+			<div className="return-home">
+				<Fab aria-label="home" variant="extended" onClick={() => { history("") }}>
+					<KeyboardReturn />
+					{t('home')}
+				</Fab>
 			</div>
+		</div>
 	);
 
 	const userCreationFormBody = (
 		<div className="form-body">
-			<h2 id="new-user-form-title">Please provide some information</h2>
+			<h2 id="new-user-form-title">{t('pleaseProvidInfo')}</h2>
 			<form onSubmit={handleSubmit} className="new-user-form">
 				<TextField
-					label="Username"
+					label={t('username')}
 					name="username"
 					onChange={handleChange}
 					value={form.username}
@@ -150,7 +153,7 @@ export const UserCreationForm: FC = () => {
 					autoComplete="new-username"
 				/>
 				<TextField
-					label="Email"
+					label={t('email')}
 					name="email"
 					onChange={handleChange}
 					value={form.email}
@@ -159,7 +162,7 @@ export const UserCreationForm: FC = () => {
 					helperText={emailError}
 				/>
 				<TextField
-					label="Confirm email"
+					label={t('confirmEmail')}
 					name="confirm-email"
 					variant="outlined"
 					error={emailCheck.length > 0 && emailCheck !== form.email}
@@ -168,7 +171,7 @@ export const UserCreationForm: FC = () => {
 					helperText={emailCheckError}
 				/>
 				<TextField
-					label="Password"
+					label={t('password')}
 					name="password"
 					type="password"
 					onChange={handleChange}
@@ -179,7 +182,7 @@ export const UserCreationForm: FC = () => {
 					autoComplete="new-password"
 				/>
 				<TextField
-					label="Confirm password"
+					label={t('confirmPassword')}
 					name="confirm-password"
 					type="password"
 					variant="outlined"
@@ -194,7 +197,7 @@ export const UserCreationForm: FC = () => {
 					sitekey="6Lf_NSYeAAAAAMy7_aqunGGn_T4tgjfZ-DuoAYlp"
 				/>
 				<div className="new-user-submit-button">
-					<Button type="submit">Submit</Button>
+					<Button type="submit">{t('submit')}</Button>
 				</div>
 			</form>
 			{error.length > 0 && (

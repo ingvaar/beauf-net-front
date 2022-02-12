@@ -1,8 +1,9 @@
-import { createBrowserHistory } from "history";
 import {
-  Router,
-  Switch,
+  BrowserRouter as Router,
   Route,
+  Outlet,
+  Routes,
+  Navigate,
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -12,30 +13,24 @@ import { AdminPage } from "src/app/screens/AdminPage/Admin.screen";
 import { ModRequestPage } from "src/app/screens/ModRequestPage/ModRequestPage";
 import { ConfirmPage } from "src/app/screens/ConfirmPage/Confirm.screen";
 import { ProfilePage } from "src/app/screens/ProfilePage/ProfilePage";
-import { availableLanguages } from "src/i18n";
-
-export const history = createBrowserHistory({ forceRefresh: false });
+import { PathLanguage } from "src/app/components/PathLanguage/PathLanguage";
 
 function App() {
-  const { i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
   return (
     <div className="App">
-      <select defaultValue={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
-        {availableLanguages.map((language) => (
-          <option key={language}>{language}</option>
-        ))}
-      </select>
-      <Router history={history}>
-        <Layout>
-          <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route exact path="/admin" component={AdminPage} />
-            <Route exact path="/mod-request" component={ModRequestPage} />
-            <Route exact path="/confirm" component={ConfirmPage} />
-            <Route exact path="/profile" component={ProfilePage} />
-          </Switch>
-        </Layout>
+      <Router>
+        <Routes>
+          <Route path=":lang" element={<PathLanguage><Layout><Outlet /></Layout></PathLanguage>}>
+            <Route index element={<Homepage />} />
+            <Route path="admin" element={<AdminPage />} />
+            <Route path="mod-request" element={<ModRequestPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+          </Route>
+          <Route path="confirm" element={<Layout><ConfirmPage /></Layout>} />
+          <Route path="*" element={<Navigate to={`${i18n.language}`} />} />
+        </Routes>
       </Router>
     </div>
   );

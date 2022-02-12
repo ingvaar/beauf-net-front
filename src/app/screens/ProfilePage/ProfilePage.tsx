@@ -1,7 +1,8 @@
 import { Button } from "@material-ui/core";
 import { Create, Gavel } from "@material-ui/icons";
-import { FC, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { Information } from "src/app/components/Information/Information";
 import { ProfileEditor } from "src/app/components/ProfileEditor/ProfileEditor";
@@ -14,16 +15,21 @@ import "./scss/profile-page.scss";
 
 export const ProfilePage: FC = () => {
 	const user: IUser = useAppSelector(selectUser);
-	const history = useHistory();
+	const history = useNavigate();
 	const [edit, setEdit] = useState<boolean>(false);
 	const [updated, setUpdated] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
+	const [loading, setLoading] = useState<boolean>(true);
+	const { t } = useTranslation();
 
-	const checkUser = () => {
-		if (!(user.role.length > 0 && user.role === 'admin')) {
-			history.push("/");
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => {
+		if (user.username.length === 0) {
+			history("");
+		} else {
+			setLoading(false);
 		}
-	}
+	});
 
 	const setEditOff = () => {
 		setEdit(false);
@@ -38,25 +44,24 @@ export const ProfilePage: FC = () => {
 		}
 	}
 
-	return (
-		<div id="profile-page" className="column">
-			{checkUser()}
+	const pageBody = (
+		<div>
 			{
 				updated &&
 				<Information class="info" content={
 					<span>
-						Profile updated !
+						{t('profileUpdated')} !
 					</span>
-				}/>
+				} />
 			}
 			{
 				!user.confirmed &&
 				<Information class="error" content={
 					<span>
-						<p>Your email is not confirmed</p>
-						<p>Check your mailbox or click <button onClick={resendMail}>here</button> to resend a confirmation email</p>
+						<p>{t('emailNotConfirmed')}</p>
+						<p>{t('checkMailOrClick')} <button onClick={resendMail}>{t('here')}</button> {t('toResendConfMail')}</p>
 					</span>
-				}/>
+				} />
 			}
 			{
 				error.length > 0 &&
@@ -64,22 +69,31 @@ export const ProfilePage: FC = () => {
 					<span>
 						{error}
 					</span>
-				}/>
+				} />
 			}
 			<div className="profile">
 				{
 					user.role === "mod" &&
-					<Gavel titleAccess="Moderator" id="mod-icon"/>
+					<Gavel titleAccess={t('moderator')} id="mod-icon" />
 				}
 				{
 					user.role === "admin" &&
-					<Gavel titleAccess="Administrator" id="admin-icon"/>
+					<Gavel titleAccess={t('administrator')} id="admin-icon" />
 				}
-				<ProfileEditor edit={edit} setEditOff={setEditOff} setUpdated={() => { setUpdated(true) }}/>
+				<ProfileEditor edit={edit} setEditOff={setEditOff} setUpdated={() => { setUpdated(true) }} />
 				<Button id="button-edit" aria-label="add quote" onClick={() => { setEdit(!edit) }}>
 					<Create />
 				</Button>
 			</div>
+		</div>
+	)
+
+	return (
+		<div id="profile-page" className="column">
+			{
+				!loading &&
+				pageBody
+			}
 		</div>
 	);
 };

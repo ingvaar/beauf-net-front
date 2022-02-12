@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { CircularProgress } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import LoginForm from "src/app/components/LoginForm/LoginForm.component";
 import { ILoginForm } from "src/interfaces/ILoginForm.interface";
@@ -12,10 +12,20 @@ import { updateUser } from "src/features/user/userSlice";
 import "./scss/LoginPage.scss";
 
 const LoginPage: FC = () => {
-	const history = useHistory();
+	const history = useNavigate();
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string>("");
+	const [pageLoading, setPageLoading] = useState<boolean>(true);
 	const dispatch = useAppDispatch();
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => {
+		if (window.localStorage.getItem("token")) {
+			history('');
+		} else {
+			setPageLoading(false);
+		}
+	});
 
 	const handleSubmit = async (
 		registerForm: ILoginForm
@@ -32,19 +42,14 @@ const LoginPage: FC = () => {
 				}).catch((error) => {
 					throw error;
 				});
-			history.push("/");
 		} catch (error: any) {
 			setError(error.message);
 			setLoading(false);
 		}
 	};
 
-	if (window.localStorage.getItem("token")) {
-		history.push('/');
-	}
-
-	return (
-		<div id="login-page" className="column">
+	const pageBody = (
+		<div>
 			<LoginForm
 				method="login"
 				parentError={error}
@@ -55,6 +60,15 @@ const LoginPage: FC = () => {
 				<div className="loader">
 					<CircularProgress />
 				</div>
+			}
+		</div>
+	)
+
+	return (
+		<div id="login-page" className="column">
+			{
+				!pageLoading &&
+				pageBody
 			}
 		</div>
 	);
