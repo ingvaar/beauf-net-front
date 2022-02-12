@@ -1,5 +1,6 @@
 import { CircularProgress } from "@material-ui/core";
 import { FC, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { UserService } from "src/services/user.service";
 
@@ -9,12 +10,13 @@ export const EmailConfirmation: FC = () => {
 	const [error, setError] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(true);
 	const search = useLocation().search;
+	const { t } = useTranslation();
 
 	useEffect(() => {
 		setLoading(true);
 		const token = new URLSearchParams(search).get('token');
 		if (token === null) {
-			setError("Invalid link");
+			setError(t('invalidLink'));
 			setLoading(false);
 			return;
 		}
@@ -25,7 +27,7 @@ export const EmailConfirmation: FC = () => {
 			setError(error.message);
 			setLoading(false);
 		})
-	}, [search]);
+	}, [search, t]);
 
 	if (loading) {
 		return (
@@ -38,7 +40,7 @@ export const EmailConfirmation: FC = () => {
 	if (error.length > 0) {
 		return (
 			<div className="confirmation denied">
-				<h2 id="failed">Email confirmation failed</h2>
+				<h2 id="failed">{t('emailConfirmationFailed')}</h2>
 				<span id="error">{error}</span>
 			</div>
 		);
@@ -46,7 +48,7 @@ export const EmailConfirmation: FC = () => {
 
 	return (
 		<div className="confirmation confirmed">
-			<h2 id="ok">Email confirmed</h2>
+			<h2 id="ok">{t('emailConfirmationOk')}</h2>
 		</div>
 	);
 };

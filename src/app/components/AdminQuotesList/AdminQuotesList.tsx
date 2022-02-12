@@ -8,6 +8,7 @@ import { FC, useEffect, useState, useMemo } from "react";
 import { QuoteService } from "src/services/quotes.service";
 
 import "./scss/AdminQuotesList.scss";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
 	page: number,
@@ -21,6 +22,7 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 	const [quotes, setQuotes] = useState<IQuotesPrivatePage>();
+	const { t } = useTranslation();
 
 	const quotesDisplay = useMemo<Array<IQuotePrivate>>(() => {
 		if (quotes === undefined) {
@@ -69,20 +71,20 @@ export const AdminQuotesList: FC<IProps> = (props: IProps) => {
 				<div className="flex footer">
 					<div className="source-author column">
 						<span>
-							{"Source: "}
+							{t('source') + ": "}
 							{quote.source ? (
 								quote.source
 							) : (
-								"Unknown"
+								t('unknown')
 							)}
 						</span>
 
 						<span>
-							{"Author: "}
+							{t('author') + ": "}
 							{quote.author ? (
 								quote.author
 							) : (
-								"Unknown"
+								t('unknown')
 							)}
 						</span>
 					</div>

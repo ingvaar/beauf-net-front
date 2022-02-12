@@ -10,6 +10,7 @@ import { CDefaultNewQuoteForm } from "./constants/DefaultNewQuoteForm";
 import { CDefaultQuotePublic } from "./constants/DefaultQuotePublic";
 
 import "./scss/NewQuoteModal.scss";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
 	open: boolean,
@@ -25,6 +26,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 		CDefaultQuotePublic
 	);
 	const [posted, setPosted] = useState<boolean>(false);
+	const { t } = useTranslation();
 
 	const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -58,7 +60,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 
 	const quoteBody = (
 			<div className="posted-quote-body">
-				<h2 id="posted-quote-title">Quote submitted !</h2>
+				<h2 id="posted-quote-title">{t('quoteSubmitted')} !</h2>
 				<span id="posted-quote-text">{newQuote.text}</span>
 				{
 					newQuote.source.length > 0 &&
@@ -67,7 +69,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 				<div className="button-close-posted-quote">
 					<Fab aria-label="close" variant="extended" onClick={closeModal}>
 						<Close />
-						Close
+						{t('close')}
 					</Fab>
 				</div>
 			</div>
@@ -75,11 +77,11 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 
 	const modalBody = (
 		<>
-			<h2 id="new-quote-modal-title">New quote</h2>
+			<h2 id="new-quote-modal-title">{t('newQuote')}</h2>
 			<form onSubmit={handleSubmit} className="new-quote-form">
 				<TextField
 					id="standard"
-					label="Quote"
+					label={t('quote')}
 					name="text"
 					multiline
 					rows={4}
@@ -90,14 +92,14 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 				/>
 				<TextField
 					id="standard"
-					label="Source (optional)"
+					label={t('source') + ' (' + t('optional') + ')'}
 					name="source"
 					onChange={handleChange}
 					value={form.source}
 				/>
 				<TextField
 					id="standard"
-					label="Author (optional)"
+					label={t('author') + ' (' + t('optional') + ')'}
 					name="author"
 					onChange={handleChange}
 					value={form.author}
@@ -108,7 +110,7 @@ export const NewQuoteModal: FC<IProps> = (props: IProps) => {
 					sitekey="6Lf_NSYeAAAAAMy7_aqunGGn_T4tgjfZ-DuoAYlp"
 				/>
 				<div className="new-quote-submit-button">
-					<Button type="submit">Submit</Button>
+					<Button type="submit">{t('submit')}</Button>
 				</div>
 			</form>
 			{error.length > 0 && (

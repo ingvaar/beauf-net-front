@@ -18,5 +18,4 @@ i18n.use(initReactI18next)
 	.init({
 		resources,
 		defaultNS: "translation",
-		fallbackLng: "en",
 	});

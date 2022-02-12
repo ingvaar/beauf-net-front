@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { AdminQuotesList } from "src/app/components/AdminQuotesList/AdminQuotesList";
 import { ButtonTrash } from "src/app/components/ButtonTrash/ButtonTrash";
@@ -14,11 +14,21 @@ import "./scss/Admin.scss";
 
 export const AdminPage: FC = () => {
 	const user: IUser = useAppSelector(selectUser);
-	const history = useHistory();
+	const history = useNavigate();
 	const [page, setPage] = useState<number>(1);
 	const [perPage, setPerPage] = useState<number>(10);
 	const [total, setTotal] = useState<number>(0);
 	const [trashModalOpen, setTrashModalOpen] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(true);
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(() => {
+		if (!(user && user.role.length > 0 && (user.role === 'admin' || user.role === 'mod'))) {
+			history("");
+		} else {
+			setLoading(false);
+		}
+	});
 
 	const setTrashModalClose = () => {
 		setTrashModalOpen(false);
@@ -28,20 +38,22 @@ export const AdminPage: FC = () => {
 		setTrashModalOpen(true);
 	}
 
-	const checkUser = () => {
-		if (!(user.role.length > 0 && user.role === 'admin')) {
-			history.push("/");
-		}
-	}
-
-	return (
-		<div id="admin-page" className="column">
-			{checkUser()}
+	const pageBody = (
+		<div>
 			<ButtonTrash openModal={openModal} />
 			<PerPage perPage={perPage} setPerPage={setPerPage} />
 			<AdminQuotesList page={page} perPage={perPage} setTotal={setTotal} />
 			<Pagination total={total} page={page} perPage={perPage} setPage={setPage} />
 			<TrashModal open={trashModalOpen} setClose={setTrashModalClose} />
+		</div>
+	)
+
+	return (
+		<div id="admin-page" className="column">
+			{
+				!loading &&
+				pageBody
+			}
 		</div>
 	);
 };

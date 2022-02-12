@@ -1,6 +1,7 @@
 import { Dialog, Fab } from "@material-ui/core";
 import { Close, DeleteForever, SettingsBackupRestore } from "@material-ui/icons";
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 
 import { selectTrash, removeQuoteFromTrash } from "src/features/trash/trashSlice";
 import { useAppSelector, useAppDispatch } from "src/hooks";
@@ -17,6 +18,7 @@ interface IProps {
 export const TrashModal: FC<IProps> = (props: IProps) => {
 	const trash = useAppSelector(selectTrash);
 	const dispatch = useAppDispatch();
+	const { t } = useTranslation();
 
 	function closeModal(event: any) {
 		event.preventDefault();
@@ -67,7 +69,7 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 				aria-describedby="new-quote-modal-description"
 				disableScrollLock={true}
 			>
-				<h2 id="trash-modal-title">Trash</h2>
+				<h2 id="trash-modal-title">{t('trash')}</h2>
 				{
 					trash.length > 1 &&
 					<Fab aria-label="empty" className="empty" onClick={() => {
@@ -79,7 +81,7 @@ export const TrashModal: FC<IProps> = (props: IProps) => {
 				{
 					(trash.length > 0 &&
 					trashList) ||
-					<span id="empty">Empty</span>
+					<span id="empty">{t('empty')}</span>
 				}
 			</Dialog>
 		</div>
