@@ -14,6 +14,7 @@ import { ModRequestPage } from "src/app/screens/ModRequestPage/ModRequestPage";
 import { ConfirmPage } from "src/app/screens/ConfirmPage/Confirm.screen";
 import { ProfilePage } from "src/app/screens/ProfilePage/ProfilePage";
 import { PathLanguage } from "src/app/components/PathLanguage/PathLanguage";
+import { AuthLayout } from "./app/components/AuthLayout/AuthLayout";
 
 function App() {
 	const { i18n } = useTranslation();
@@ -24,9 +25,11 @@ function App() {
         <Routes>
           <Route path=":lang" element={<PathLanguage><Layout><Outlet /></Layout></PathLanguage>}>
             <Route index element={<Homepage />} />
-            <Route path="admin" element={<AdminPage />} />
+            <Route element={<AuthLayout><Outlet /></AuthLayout>}>
+              <Route path="admin" element={<AdminPage />} />
+              <Route path="profile" element={<ProfilePage />} />
+            </Route>
             <Route path="mod-request" element={<ModRequestPage />} />
-            <Route path="profile" element={<ProfilePage />} />
           </Route>
           <Route path="confirm" element={<Layout><ConfirmPage /></Layout>} />
           <Route path="*" element={<Navigate to={`${i18n.language}`} />} />

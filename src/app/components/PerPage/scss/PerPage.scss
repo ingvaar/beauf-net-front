@@ -6,6 +6,16 @@
 		.select {
 			display: flex;
 		}
+
+		.MuiNativeSelect-select.MuiNativeSelect-select {
+			min-width: 30px;
+			text-align: center;
+			padding-right: 0;
+		}
+
+		.MuiNativeSelect-icon {
+			display: none;
+		}
 	}
 
 	.helper {

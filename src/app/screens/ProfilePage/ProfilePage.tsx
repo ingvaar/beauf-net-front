@@ -22,14 +22,13 @@ export const ProfilePage: FC = () => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const { t } = useTranslation();
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		if (user.username.length === 0) {
-			history("");
+			history("/");
 		} else {
 			setLoading(false);
 		}
-	});
+	}, [user.username.length, history]);
 
 	const setEditOff = () => {
 		setEdit(false);
@@ -45,7 +44,7 @@ export const ProfilePage: FC = () => {
 	}
 
 	const pageBody = (
-		<div>
+		<div className="page-body">
 			{
 				updated &&
 				<Information class="info" content={

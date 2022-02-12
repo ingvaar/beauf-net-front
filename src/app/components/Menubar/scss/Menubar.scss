@@ -7,6 +7,21 @@
 	position: sticky;
 	background: rgba(lightgray, 0);
 	height: 40px;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+	.logo-lang {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+
+		.lang-selector {
+			position: relative;
+			left: 40px;
+		}
+	}
 
 	.MuiButton-root {
 		background: linear-gradient(45deg, #ff97af 30%, #ec905e 70%);
