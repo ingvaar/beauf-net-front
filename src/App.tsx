@@ -14,7 +14,7 @@ import { ModRequestPage } from "src/app/screens/ModRequestPage/ModRequestPage";
 import { ConfirmPage } from "src/app/screens/ConfirmPage/Confirm.screen";
 import { ProfilePage } from "src/app/screens/ProfilePage/ProfilePage";
 import { PathLanguage } from "src/app/components/PathLanguage/PathLanguage";
-import { AuthLayout } from "./app/components/AuthLayout/AuthLayout";
+import { AuthLayout } from "src/app/components/AuthLayout/AuthLayout";
 
 function App() {
 	const { i18n } = useTranslation();
