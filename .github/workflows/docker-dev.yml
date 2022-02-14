@@ -7,7 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  API_URI: https://dev.api.beauf.net
+  API_URI: 'https://dev.api.beauf.net'
 
 jobs:
   build-and-push-image:
@@ -41,4 +41,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-          REACT_APP_API_URI=${{ env.API_URI }}
+            REACT_APP_API_URI=${{ env.API_URI }}
