@@ -56,7 +56,7 @@ export const QuotesList: FC<IProps> = (props: IProps) => {
 		}
 	}
 
-	const elements = quotesDisplay.map((quote) => {
+	const elements = quotesDisplay?.map((quote) => {
 		return (
 			<div key={quote.id} className="item">
 				<div className="quote">
