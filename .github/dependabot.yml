@@ -4,15 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "maintainers"
   - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 5
-    reviewers:
-      - "maintainers"
     commit-message:
       prefix: fix
       prefix-development: chore
