@@ -22,9 +22,8 @@ FROM nginx:stable-alpine AS runner
 
 WORKDIR /usr/share/nginx/html
 
-RUN rm -rf ./*
-
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm -rf ./* &&\
+ 	rm /etc/nginx/conf.d/default.conf
 
 COPY nginx.conf /etc/nginx/conf.d
 
