@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react"
+import { useEffect } from "react"
 import { updateUser } from "src/features/user/userSlice";
 import { useAppDispatch } from "src/hooks";
 import { IUser } from "src/interfaces/IUser.interface";
@@ -8,7 +8,11 @@ import { Menubar } from "../Menubar/Menubar"
 
 import "./scss/Layout.scss";
 
-export const Layout: FC = ({ children }) => {
+interface Props {
+	children: React.ReactNode,
+};
+
+export const Layout = (props: Props) => {
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -24,7 +28,7 @@ export const Layout: FC = ({ children }) => {
 	return (
 		<div id='layout' className='column'>
 			<Menubar />
-			<main>{children}</main>
+			<main>{props.children}</main>
 			<FooterComponent />
 		</div>
 	)

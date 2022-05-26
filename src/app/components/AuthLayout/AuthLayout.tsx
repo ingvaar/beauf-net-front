@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateUser } from "src/features/user/userSlice";
@@ -6,7 +6,11 @@ import { useAppDispatch } from "src/hooks";
 import { IUser } from "src/interfaces/IUser.interface";
 import { AuthService } from "src/services/auth.service";
 
-export const AuthLayout: FC = ({ children }) => {
+interface Props {
+	children: React.ReactNode,
+};
+
+export const AuthLayout = (props: Props) => {
 	const dispatch = useAppDispatch();
 	const [fetchedUser, setFetchedUser] = useState<boolean>(false);
 	const history = useNavigate();
@@ -28,7 +32,7 @@ export const AuthLayout: FC = ({ children }) => {
 		<div id='auth-layout'>
 			{
 				fetchedUser &&
-				children
+				props.children
 			}
 		</div>
 	)
