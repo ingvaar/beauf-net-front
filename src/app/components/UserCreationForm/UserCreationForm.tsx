@@ -130,7 +130,7 @@ export const UserCreationForm: FC = () => {
 		<div className="submitted-user-body">
 			<h2 id="submitted-user-title">{t('thanksForSubmitting')} !</h2>
 			<div className="return-home">
-				<Fab aria-label="home" variant="extended" onClick={() => { history("") }}>
+				<Fab aria-label="home" variant="extended" onClick={() => { history("/") }}>
 					<KeyboardReturn />
 					{t('home')}
 				</Fab>

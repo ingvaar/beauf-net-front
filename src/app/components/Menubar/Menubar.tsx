@@ -21,7 +21,7 @@ export const Menubar: FC = () => {
 	const handleSignOut = () => {
 		window.localStorage.removeItem("token");
 		dispatch(deleteUser());
-		history("");
+		history("/");
 	}
 
 	const adminPanel = () => {
@@ -34,7 +34,7 @@ export const Menubar: FC = () => {
 
 	const home = () => {
 		return (
-			<Button className="home" id="home" onClick={() => history("/")}>Beauf.net</Button>
+			<Button className="home" id="home" onClick={() => { history("/") }}>Beauf.net</Button>
 		)
 	}
 
