@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   API_URI: https://api.beauf.net
-  API_URI_STAGING: https://staging.api.beauf.net
+  API_URI_STAGING: https://dev.api.beauf.net
 
 jobs:
   build-and-push-image:
@@ -55,4 +55,4 @@ jobs:
           push: true
           tags: ${{ steps.docker_metadata.outputs.tags }}
           labels: ${{ steps.docker_metadata.outputs.labels }}
-          build-args: REACT_APP_API_URI=${{ steps.docker_metadata.outputs.labels.org.opencontainers.image.version == 'nightly' && env.API_URI_STAGING || env.API_URI }}
+          build-args: REACT_APP_API_URI=${{ endsWith(github.ref, github.event.repository.default_branch) && env.API_URI_STAGING || env.API_URI }}
