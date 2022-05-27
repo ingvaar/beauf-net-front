@@ -16,8 +16,6 @@ COPY . ./
 
 RUN yarn build
 
-
-
 FROM nginx:stable-alpine AS runner
 
 WORKDIR /usr/share/nginx/html
@@ -25,9 +23,9 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./* &&\
  	rm /etc/nginx/conf.d/default.conf
 
-COPY nginx.conf /etc/nginx/conf.d
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/conf.d
 
-COPY --from=builder /app/build .
+COPY --from=builder --chown=nginx:nginx /app/build .
 
 EXPOSE 80
 
