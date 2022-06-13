@@ -4,10 +4,10 @@ on:
   workflow_call:
 
   push:
-    branches: [master]
+    branches: [main]
 
   pull_request:
-    branches: [master]
+    branches: [main]
 
 concurrency:
   group: lint-${{ github.ref }}
