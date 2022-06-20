@@ -1692,10 +1692,10 @@
     "@testing-library/dom" "^8.0.0"
     "@types/react-dom" "<18.0.0"
 
-"@testing-library/user-event@^14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.2.0.tgz#8293560f8f80a00383d6c755ec3e0b918acb1683"
-  integrity sha512-+hIlG4nJS6ivZrKnOP7OGsDu9Fxmryj9vCl8x0ZINtTJcCHs2zLsYif5GzuRiBF2ck5GZG2aQr7Msg+EHlnYVQ==
+"@testing-library/user-event@^14.2.1":
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-14.2.1.tgz#8c5ff2d004544bb2220e1d864f7267fe7eb6c556"
+  integrity sha512-HOr1QiODrq+0j9lKU5i10y9TbhxMBMRMGimNx10asdmau9cb8Xb1Vyg0GvTwyIL2ziQyh2kAloOtAQFBQVuecA==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -4902,10 +4902,10 @@ i18next-http-backend@^1.4.1:
   dependencies:
     cross-fetch "3.1.5"
 
-i18next@^21.8.9:
-  version "21.8.9"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.8.9.tgz#c79edd5bba61e0a0d5b43a93d52e2d13a526de82"
-  integrity sha512-PY9a/8ADVmnju1tETeglbbVQi+nM5pcJQWm9kvKMTE3GPgHHtpDsHy5HQ/hccz2/xtW7j3vuso23JdQSH0EttA==
+i18next@^21.8.10:
+  version "21.8.10"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-21.8.10.tgz#12f164cc0f5f7904f0d4e0cfdf5950b93793d171"
+  integrity sha512-7xRb6y4QlSqZRZ3uA5BIEsLuZpmxpzHLizQyKjDDThOcvdfgICOX7aFoBnh4BSWcLtJamTqSweaOuK22A2xqkA==
   dependencies:
     "@babel/runtime" "^7.17.2"
 
@@ -7370,10 +7370,10 @@ react-google-recaptcha@^2.1.0:
     prop-types "^15.5.0"
     react-async-script "^1.1.1"
 
-react-i18next@^11.17.1:
-  version "11.17.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.17.1.tgz#3a5309ac6c093b4c556c7f8a0a808c034929040c"
-  integrity sha512-4H4fK9vWsQtPP0iAdqzGfdPKLaSXpCjuh1xaGsejX/CO8tx8zCnrOnlQhMgrJf+OlUfzth5YaDPXYGp3RHxV1g==
+react-i18next@^11.17.2:
+  version "11.17.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.17.2.tgz#4ca77a20bedfa607e4e863dcc85963d1a180e2e9"
+  integrity sha512-/HG4XSResWDY450cFmoUqLgCYDu8VYMFISGcMnZlxRSV05naj3+F7DoebwnPu6z/akA3Wd0Xe7KGTYdywL9z9g==
   dependencies:
     "@babel/runtime" "^7.14.5"
     html-escaper "^2.0.2"
