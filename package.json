@@ -8,7 +8,7 @@
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "eslint-config-react-app": "^7.0.0",
-    "eslint-plugin-react": "^7.31.1",
+    "eslint-plugin-react": "^7.31.8",
     "i18next": "^21.9.2",
     "i18next-browser-languagedetector": "^6.1.5",
     "i18next-http-backend": "^1.4.2",
