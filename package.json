@@ -22,7 +22,7 @@
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.1",
-    "sass": "^1.55.0",
+    "sass": "^1.62.1",
     "typescript": "^5.0.4",
     "web-vitals": "^3.3.1"
   },
