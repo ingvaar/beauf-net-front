@@ -9,7 +9,7 @@
     "axios": "^1.4.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-react": "^7.33.1",
-    "i18next": "^23.2.11",
+    "i18next": "^23.4.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-http-backend": "^2.2.1",
     "jwt-decode": "^3.1.2",
